@@ -86,6 +86,28 @@ strong { font-weight: var(--fw-bold) }
     transform: scale(1.1);
 }
 
+.btnBlock {
+    display: inline-block;
+    padding: 0.5em 2.5em;
+    background: var(--clr-dark);
+    color: var(--clr-accent);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: var(--fw-bold);
+    transition: transform 200ms ease-in-out;
+}
+
+.btnBlock:hover {
+    /*zoom: 1.1;
+    transform: scale(0.9);
+    padding: 0.35em 2.5em;
+    font-size: 0.9rem;*/
+    opacity: 0.5;
+}
+
 /* Typography */
 
 h1,
@@ -483,4 +505,130 @@ header {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.portfolio-item-individual a {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+.center {
+    padding: 0 2em 2em;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.gallery {    
+    margin: 0;
+    padding: 1em;
+    /*height: 60vh;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--clr-dark);    
+}
+
+.slider {
+    width: 800px;
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slides {
+    width: 500%;
+    height: 500px;
+    display: flex;
+}
+
+.slides input {
+    display: none;
+}
+
+.slide {
+    width: 20%;
+    transition: 2s;
+}
+
+.slide img {
+    width: 800px;
+    height: 500px;
+}
+
+@media (min-width: 800px) {
+    .slides {
+        width: 500%;
+        height: 500px;
+    }
+
+}
+
+.navigation-manual {
+    position: relative;
+    /*width: 800px;*/
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn {
+    border: 2px solid var(--clr-accent);
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.manual-btn:not(:last-child) {
+    margin-right: 40px;
+}
+
+.manual-btn:hover {
+    background: var(--clr-accent);
+}
+
+#radio1:checked ~ .first {
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first {
+    margin-left: -20%;
+}
+
+#radio3:checked ~ .first {
+    margin-left: -40%;
+}
+
+.navigation-auto {
+    position: absolute;
+    display: flex;
+    width: 800px;
+    justify-content: center;
+    margin-top: 460px;
+}
+
+.navigation-auto div {
+    border: 2px solid var(--clr-accent);
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+.navigation-auto div:not(:last-child) {
+    margin-right: 40px;
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1 {
+    background: var(--clr-accent);
+}
+
+#radio2:checked ~ .navigation-auto .auto-btn2 {
+    background: var(--clr-accent);
+}
+
+#radio3:checked ~ .navigation-auto .auto-btn3 {
+    background: var(--clr-accent);
 }

@@ -47,16 +47,20 @@
         </section>
 
         <div class="portfolio-item-individual">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Two spawners alternate spawning slabs towards the center and the player attempt to build the highest 
+                stack possible. To start press Fire1 or spacebar and do the same to place stop slabs and place them. 
+                Any slab over hang gets cut off and any future slabs are resized to the size of the remaining peice. 
+                The game ends when any slab is stopped and misses the main stack.</p>
             <img src="img/build-stack.png" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>The core script, <em>MovingCube</em>, attached to every instantiate cube. This script is responsible 
+                for managing movement and player input. It handles the logic of slicing the slab into a remaining and 
+                hangover peice. Increases game diffculty and triggers OnDied event used for Game Over/restarting. 
+            </p>
+            <p>Other supporting scripts include a <em>GameManager</em> to keep track of if player isAlive and where 
+                the slabs are spawning from. <em>CubeSpawner</em> to spawn the slabs and <em>MainCamera</em> to adjust 
+                camera height to keep the game in view. A <em>ScoreText</em> script in designed to keep track of current 
+                score and all time high score.
+            </p>
         </div>
 
         <!-- Footer -->

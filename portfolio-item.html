@@ -46,17 +46,80 @@
             <img src="img/build-stack.png" alt="" class="intro__img">
         </section>
 
-        <div class="portfolio-item-individual">
+        <!-- Overview -->
+        <div class="portfolio-item-individual">            
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <img src="img/build-stack.png" alt="">
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        
+        <!-- Gallery -->
+        <section class="gallery">
+            <div class="slider">
+                <div class="slides">
+                    <!--radio buttons-->
+                    <input type="radio" name="radio-btn" id="radio1">
+                    <input type="radio" name="radio-btn" id="radio2">
+                    <input type="radio" name="radio-btn" id="radio3">
+    
+                    <!--slide images-->
+                    <div class="slide first">
+                        <img src="img/cube-fall.png" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="img/flappy-bird.png" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="img/build-stack.png" alt="">
+                    </div>
+    
+                    <!--automatic navigation-->
+                    <div class="navigation-auto">
+                        <div class="auto-btn1"></div>
+                        <div class="auto-btn2"></div>
+                        <div class="auto-btn3"></div>
+                    </div>            
+                </div>    
+                <!--manual navigation--> 
+                <div class="navigation-manual">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                </div>
+            </div>
+
+
+            <script type="text/javascript">
+            var counter = 1;
+            document.getElementById('radio' + counter).checked = true;
+            
+            setInterval(function(){               
+                document.getElementById('radio' + counter).checked = true;
+                counter++;
+                if(counter > 3) {
+                    counter = 1;
+                }
+                       
+            }, 8000);
+            
+            </script>
+        </section>          
+
+        <!-- Details -->
+        <div class="portfolio-item-individual">          
+            <!--
+            <a href="https://play.unity.com/mg/other/webgl-builds-124491" class="btnBlock">Play Game</a>
+            -->
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
+        </div>
+
+        <div class="center">
+            <a href="https://play.unity.com/mg/other/webgl-builds-124491" class="btn">Play Game</a>
         </div>
 
         <!-- Footer -->
