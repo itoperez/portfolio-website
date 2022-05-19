@@ -87,7 +87,8 @@ strong { font-weight: var(--fw-bold) }
 }
 
 .btnBlock {
-    display: inline-block;
+    display: block;
+    text-align: center;
     padding: 0.5em 2.5em;
     background: var(--clr-dark);
     color: var(--clr-accent);
@@ -101,11 +102,23 @@ strong { font-weight: var(--fw-bold) }
 }
 
 .btnBlock:hover {
-    /*zoom: 1.1;
-    transform: scale(0.9);
-    padding: 0.35em 2.5em;
-    font-size: 0.9rem;*/
     opacity: 0.5;
+}
+
+.btnScroll {
+    display: inline-block;
+    padding: 0.5em 0.5em;
+    background: transparent;
+    color: var(--clr-accent);
+    cursor: pointer;
+    font-size: 3rem;
+    border: none;
+    outline: none;
+    transition: transform 150ms ease-in-out;
+}
+
+.btnScroll:hover {    
+    transform: scale(1.5);
 }
 
 /* Typography */
@@ -493,42 +506,31 @@ header {
     padding: 0.5em;
 }
 
-/* Individual Portfolio Item Styles */
+/* Individual Portfolio Summary */
 
-.portfolio-item-individual {
-    padding: 0 2em 2em;
+.portfolio-item-summary {
+    padding: 0em 2em 2em;
     max-width: 1000px;
     margin: 0 auto;
 }
 
-.portfolio-item-individual p {
+.portfolio-item-summary p {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.portfolio-item-individual a {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    text-align: center;
-}
 
-.center {
-    padding: 0 2em 2em;
-    max-width: 1000px;
-    margin: 0 auto;
-    text-align: center;
-}
+/* Individual Portfolio Gallery */
 
 .gallery {    
     margin: 0;
-    padding: 1em;
+    padding: 0em;
     /*height: 60vh;*/
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--clr-dark);    
+    background: var(--clr-light);    
 }
 
 .slider {
@@ -544,6 +546,15 @@ header {
     display: flex;
 }
 
+@media (max-width: 1100px) {
+    .slider {
+        min-width: 800px;
+        height: 500px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+}
+
 .slides input {
     display: none;
 }
@@ -556,14 +567,6 @@ header {
 .slide img {
     width: 800px;
     height: 500px;
-}
-
-@media (min-width: 800px) {
-    .slides {
-        width: 500%;
-        height: 500px;
-    }
-
 }
 
 .navigation-manual {
@@ -631,4 +634,53 @@ header {
 
 #radio3:checked ~ .navigation-auto .auto-btn3 {
     background: var(--clr-accent);
+}
+
+/* Individual Portfolio Info */
+
+.info {
+    background: var(--clr-light);   
+    color: var(--clr-dark);
+}
+
+.portfolio-item-details {
+    padding: 0em 2em;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.portfolio-item-details p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.portfolio-item-links{
+    padding: 2em 2em 1em;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.play-link {
+    padding: 0 2em 2em;
+} 
+
+@media (min-width: 600px) {   
+    .portfolio-item-links{         
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+        grid-template-areas:
+            "playLink repoLink"
+    }
+
+    .play-link {
+        padding: 0;
+        grid-area: playLink;
+    } 
+
+    .repo-link {
+        grid-area: repoLink;
+    }
 }
