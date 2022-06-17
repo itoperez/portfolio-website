@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">  
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DevIto Portfolio Wedsite</title>
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc=" crossorgin="anonymous"/>
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
+        +Pro:300,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/5fa45d2fa2.js" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="img/dev-logo.png" alt="">
+            </div>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="index.html#services" class="nav__link">My Services</a></li>
+                    <li class="nav__item"><a href="index.html#about" class="nav__link">About Me</a></li>
+                    <li class="nav__item"><a href="index.html#work" class="nav__link">My Work</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Introduction -->
+        <section class="intro">
+            <h1 class="section__title section__title--intro">
+                The title <strong>of my project</strong>
+            </h1>
+            <p class="section__subtitle section__subtitle--intro">A short subtitle</p>
+            <img src="img/build-stack.png" alt="" class="intro__img">
+        </section>
+
+        <!--Summary-->
+        <!--<section class="summary">-->
+            <div class="portfolio-item-summary">            
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+        <!--</section>--> 
+        
+        <!-- Gallery -->
+        <section class="gallery">
+            <!--left scroll button-->
+            <div>
+                <button class="btnScroll" onclick="scrollL()"><i class="fa-solid fa-angle-left"></i></button>
+            </div>
+
+            <div class="slider">
+                <div class="slides">
+                    <!--radio buttons-->
+                    <input type="radio" name="radio-btn" id="radio1">
+                    <input type="radio" name="radio-btn" id="radio2">
+                    <input type="radio" name="radio-btn" id="radio3">
+
+                    <!--slide images-->
+                    <div class="slide first">
+                        <img src="img/cube-fall.png" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="img/flappy-bird.png" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="img/donutGIF.gif" alt="">
+                    </div>
+
+                    <!--automatic navigation-->
+                    <div class="navigation-auto">
+                        <div class="auto-btn1"></div>
+                        <div class="auto-btn2"></div>
+                        <div class="auto-btn3"></div>
+                    </div>            
+                </div>    
+                <!--manual navigation--> 
+                <div class="navigation-manual">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                </div>
+            </div>
+
+            <!--right scroll button-->
+            <div>
+                <button class="btnScroll" onclick="scrollR()"><i class="fa-solid fa-angle-right"></i></button>
+            </div>
+
+            <script type="text/javascript">
+                var counter = 1;
+                document.getElementById('radio' + counter).checked = true;
+                /*
+                counter = 2;
+                setInterval(function(){               
+                    document.getElementById('radio' + counter).checked = true;
+                    counter++;
+                    if(counter > 3) {
+                        counter = 1;
+                    }
+                        
+                }, 10000);
+                */
+                function scrollL() {
+                    //alert("Counter: " + counter); 
+                    if(counter > 1){
+                        counter--;
+                        document.getElementById('radio' + counter).checked = true;
+                    } 
+                    else {
+                        counter = 3;
+                        document.getElementById('radio' + counter).checked = true;
+                    }                    
+
+                }  
+                function scrollR() {
+                    //alert("Counter: " + counter); 
+                    if(counter < 3){
+                        counter++;
+                        document.getElementById('radio' + counter).checked = true;
+                    }      
+                    else {
+                        counter = 1;
+                        document.getElementById('radio' + counter).checked = true;
+                    }                
+                }           
+            </script>
+        </section>          
+
+        <!--Info-->
+        <section class="info">
+            <!--Details -->
+            <div class="portfolio-item-details">          
+                <!--
+                <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
+                -->
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
+            </div>
+
+            <!--Links-->
+            <div class="portfolio-item-links">
+                <div class="play-link">
+                    <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btn">Play Game</a>
+                </div>
+                <div class="repo-link">
+                    <a href="https://github.com/itoperez/cube-fall" target="_blank" class="btn">Visit Repo</a>  
+                </div>            
+            </div>
+        </section>
+        
+        
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="mailto:itoperez83@gmail.com" class="footer__link">itoperez83@gmail.com</a>
+            <ul class="social-list">
+                <li class="social-list__item">  
+                    <a class="social-list__link" href="https://github.com/itoperez">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://play.unity.com/u/itoperez83">
+                        <i class="fa-brands fa-unity"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://www.hackerrank.com/itoperez83">
+                        <i class="fa-brands fa-hackerrank"></i>
+                    </a>
+                </li>         
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://www.linkedin.com/">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>             
+            </ul>
+        </footer>
+        
+        <script src="js/index.js"></script>
+
+    </body>
+</html>
