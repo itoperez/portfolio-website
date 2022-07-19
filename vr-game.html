@@ -40,18 +40,31 @@
         <!-- Introduction -->
         <section class="intro">
             <h1 class="section__title section__title--intro">
-                The title <strong>of my project</strong>
+                The title <strong>VR Game</strong>
             </h1>
             <p class="section__subtitle section__subtitle--intro">A short subtitle</p>
-            <img src="img/build-stack.png" alt="" class="intro__img">
+            <img src="img/vr-game/vr-game-main.png" alt="" class="intro__img">
         </section>
 
         <!--Summary-->
         <!--<section class="summary">-->
             <div class="portfolio-item-summary">            
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>This VR Game isn't a game at all I just wanted to learn how to do all the basic things you could do in VR. The videos below
+                    show everything that I learned but I will go into more detail here. Not specifically shown is the use of Unity's new action
+                    based system for using VR input with multiple headset devices and covers movement. Also hand pressence that can be change 
+                    to show your specific device controllers. There are other minor things not necessarily related to vr like camera mirror,
+                    reflection probes, reseting targets, and cloth/hair.
+                </p>
+                <p>In the first video below the player can use either direct interaction grab or ray interaction grab (force pull) to pick up 
+                    the balls and put them in the drawer which is opened and closed by interacting with the handle and opens to a point with
+                    a configurable joint. The door works similarly expect it uses a hinge limiting how far it opens. Grabing the orange ball 
+                    showcases an offset grab that is kind of like using the force to keep the ball levitating in place. We move on to a ray 
+                    intertion that previews the next box color on the list and a lever with hinge that permanently changes it to the next color when pulled
+                    down and then the previous when pulled up. A brief show of how teleporting works on teleportable surfaces (purple floor) 
+                    with a preview blue particle system effect to show where you will be teleported to (push forward on stick while holding 
+                    trigger then release or press button 1 to teleport). Quick bowling on frictionless surface and two handed climbing using XR
+                    Base Interactable and overriding it a bit. Finally a lever to teleport on top of the tower. 
+                </p>
             </div>
         <!--</section>--> 
         
@@ -71,13 +84,19 @@
 
                     <!--slide images-->
                     <div class="slide first">
-                        <img src="img/cube-fall.png" alt="">
+                        <video controls loop controls autoplay muted="">
+                            <source src="img/vr-game/vr-game-cabinetBalls-leverBox-bowling-climbing-vid1.mp4" type="video/mp4">
+                        </video>
                     </div>
                     <div class="slide">
-                        <img src="img/flappy-bird.png" alt="">
+                        <video controls loop controls autoplay muted="">
+                            <source src="img/vr-game/vr-game-holstering-weapons-vid2.mp4" type="video/mp4">
+                        </video>
                     </div>
                     <div class="slide">
-                        <img src="img/donutGIF.gif" alt="">
+                        <video controls loop controls autoplay muted="">
+                            <source src="img/vr-game/vr-game-ui-mirrors-probe-vid3.mp4" type="video/mp4">
+                        </video>
                     </div>
 
                     <!--automatic navigation-->
@@ -147,12 +166,21 @@
                 <!--
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
+                <p>The second video shows the three available pockets or inventory snap zones. We start with the two at belt level which
+                    changes depending on the players hieght and location when climbing or crouching. Then theres a back snap zone that stays
+                    roughly behind your head. All these snap zones use the XR Socket Interactor. With the assault rifle we can see the use of
+                    two handed grab which inherits from XR Grab Interactable with a couple overrides. The trigger hand on the rifle can
+                    independently affect the pitch, roll, and yaw. When both the trigger and the guard are being held with both hands they 
+                    collectively affect the pitch and yaw but only the trigger hand affects the roll. Both the cans and target use a Lerp Reset
+                    script (linear interpolation) with the exception that the target cubes are frozen on the X and Y axis. Guns shoot a sphere
+                    projectile and light saber turns on and off and does sword things both with cool sounds.
+                </p>
+                <p>The third video starts off by showing interactions with basic UI elements (drop down box, slider, button) using ray 
+                    interaction. A bit more on showing teleportation and how you can't teleport through walls. The hat wall is a bunch of XR 
+                    Socket Interators that can hold anything. There is also a socket on your head that can only hold hats. Your pockets can hold
+                    weapons and not hats or balls. For the three panel mirrors the two mirrors on the side use cameras that change in height with
+                    your head and the center used a reflection probe. TO BE ADDED IT A HAIR AND CLOTH DEMONSTRATION.
+                </p>  
             </div>
 
             <!--Links-->
@@ -161,7 +189,7 @@
                     <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btn">Play Game</a>
                 </div>
                 <div class="repo-link">
-                    <a href="https://github.com/itoperez/cube-fall" target="_blank" class="btn">Visit Repo</a>  
+                    <a href="https://github.com/itoperez/vr-game" target="_blank" class="btn">Visit Repo</a>  
                 </div>            
             </div>
         </section>

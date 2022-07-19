@@ -49,8 +49,14 @@
         <!--Summary-->
         <!--<section class="summary">-->
             <div class="portfolio-item-summary">            
-                <p>Cube Fall is a game where the objective is to stay alive as long as possible while 
-                    falling down never ending platforms. Platform types include: regular, moving, spike, and breakable.</p>
+                <p>Cube Fall is a game where the objective is to stay alive as long as possible while falling down never ending platforms.
+                    To control the character's left and right movement you can use WASD or arrow keys. A single jump is added that resets once
+                    you are no longer airborne. In the future this could be made into a power up found or collected with coins. Score and 
+                    highscore need to be added as well and more UI.</p>
+                <p>This was my first game and really taught me the basics. With this project I learned about character movement, colliders, event triggers, animations, audio source, scene managers,
+                    kinematic rigid bodies, and parralax effect.
+                </p> 
+                    
             </div>
         <!--</section>--> 
         
@@ -151,12 +157,13 @@
                 <!--
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
+                <p>The game starts with the cube character in the center of the screen. The player controls left and right movement of the 
+                    cube but collisions with its enviornment rotate will it on the its z-axis. Left and right bounds don't allow the cube to 
+                    extent passed the visible area, upper spike bounds trigger a death as does a lower falling bound.</p>
+                <p>Platform types include: regular, moving, spike, and breakable. The four kinematic platforms have animations with some 
+                    affecting the players movement and others also triggering death. They are spawned from below and with the help of the 
+                    background parallax effect they sell the illusion of falling. A sound manager controls the sound effects and background 
+                    music and a game manager is used to restart the game after a death is triggered.</p>
             </div>
 
             <!--Links-->

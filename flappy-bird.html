@@ -49,9 +49,14 @@
         <!--Summary-->
         <!--<section class="summary">-->
             <div class="portfolio-item-summary">            
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Flappy Bird is played the same way in this PC remake. Press spacebar or right click
+                    to give the bird an upward boost while avoiding the tube obstacles as well as the ceiling and ground. Jumps are unlimited
+                    and the level is infinite. Dificulty is increase every 10 tubes (maxed at 40) with smaller gaps and faster spawning.</p>
+                <p>This project really taught me how to organize things early on for a full game. The game is complete with UI, game over window,
+                    main menu screen, and loading sceen. I learned about changing prefabs in script and rotating them, UI Canvas, UI text and buttons, 
+                    animating UI elements, persistent data, scene transitions, enums for game state and difficulty, euler angles to make bird 
+                    seem top heavy.                   
+                </p>    
             </div>
         <!--</section>--> 
         
@@ -152,12 +157,14 @@
                 <!--
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
+                <p>The game will wait for input before starting to flop to bird 'forward'. The score UI (visible while playing) increases upon 
+                    passing a pipe pair. Pipes is a class that contains prefabs, pipe gap size, speed, and other details to move and deactivate the 
+                    pipes. The ground is made of three identical prefabs that cycle with movement. Clouds work the same way as the gound with three prefab
+                    variations.
+                </p>
+                <p>Death will trigger an animated pop up Game Over window with options to reload the scene or go to a Main
+                    Menu scene. Highscore is updated at this time with message is it is beated. An in between loading scene was added when switching
+                    scenes which is more useful in bigger games but still good to have. The main menu scene has the option to play or quit game.</p>  
             </div>
 
             <!--Links-->

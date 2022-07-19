@@ -49,9 +49,13 @@
         <!--Summary-->
         <!--<section class="summary">-->
             <div class="portfolio-item-summary">            
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>FPS Survival Game is and open world (area with no boundaries so don't fall off) game with endless zombies/cannibals and wild 
+                    boars trying to kill you. Try to survive as long as you can with your six given weapons [axe, revolver, shotgun, assault 
+                    rifle, spear, and bow]. Switch between weapons using numbers 1-6 on keyboard or scroll wheel on mouse. Enemies spawn all over
+                    the map but will only chase then attack you when you are in their chase and then attack range. Chase range is made larger when
+                    enemies are shot. All weapons are shot with left click and can be aimed(zoom in) with right click except the axe. The bow and 
+                    spear require you to aimed/draw before shooting.    
+                </p>
             </div>
         <!--</section>--> 
         
@@ -152,12 +156,18 @@
                 <!--
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
+                <p>This project required animating the player/weapons and enemies with an extra cool two camera trick with different FOVs to 
+                    pull off the aim animation. To deal damage the axe has a attack point attacked to its head to detect collisions just like 
+                    the punches and kicks it the Beat Em Up game. Spears and arrows has simular attack points attacks to the head of the 
+                    projectile prefabs that are instantiated and thrown using a force and rotate as they arch forward. The remaining gun 
+                    weapons use Ray Tracing. The player has a capsule collider that resizes when crouching and follows when jumping. 
+                    Sound FX all around like usual and scene management. 
+                </p>  
+                <p>Additionally there is a health UI and stamina UI which regenerates over time and is used to allow the player to sprint. Two
+                    more enemy UIs, top for cannibal/zombie and bottom for boars, appear only if the enemy is actively aware of you. If you 
+                    have more than one enemy after you priority is given to the last one you have attacked. Finally a new enemy will spawn when 
+                    another of its kind has been killed and will patrol the map on walkable terrian using Unity's Nav Mesh Pro.
+                </p>  
             </div>
 
             <!--Links-->
