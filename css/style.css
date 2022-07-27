@@ -553,7 +553,7 @@ header {
 }
 
 .portfolio-item-summary {
-    padding: 2em 4em;
+    padding: 0em 4em 2em;
     /*max-width: 800px;*/
     margin: 0 auto;
     background-color: var(--clr-light);
@@ -713,6 +713,13 @@ header {
     margin-right: auto;
 }
 
+.portfolio-item-link{
+    padding: 2em 2em 1em;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
 .portfolio-item-links{
     padding: 2em 2em 1em;
     max-width: 400px;
@@ -741,4 +748,26 @@ header {
     .repo-link {
         grid-area: repoLink;
     }
+}
+
+/* Individual Portfolio Other Projects */
+
+.other-projects {
+    background: var(--clr-dark);
+    color: var(--clr-light);
+}
+
+.portfolio-item-other-projects {
+    padding: 0em 4em 5em;
+    /*max-width: 800px;*/
+    margin: 0 auto;
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+    /*font-weight: 1000;*/
+}
+
+.portfolio-item-other-projects p {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }

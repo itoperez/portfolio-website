@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>DevIto Portfolio Wedsite</title>
+        <title>Stardew Valley</title>
         <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
         <link rel="stylesheet"
@@ -21,9 +21,11 @@
     </head>
     <body>
         <header>
+            <!--
             <div class="logo">
                 <img src="img/dev-logo.png" alt="">
             </div>
+            -->
             <button class="nav-toggle" aria-label="toggle navigation">
                 <span class="hamburger"></span>
             </button>
@@ -40,18 +42,20 @@
         <!-- Introduction -->
         <section class="intro">
             <h1 class="section__title section__title--intro">
-                The title <strong>Stardew Valley</strong>
+                A remake of <strong>Stardew Valley</strong>
             </h1>
-            <p class="section__subtitle section__subtitle--intro">A Remake</p>
+            <p class="section__subtitle section__subtitle--intro">Using Unity 2D</p>
             <img src="img/stardew-valley-game/stardew-valley-game-main.png" alt="" class="intro__img">
         </section>
 
         <!--Summary-->
         <!--<section class="summary">-->
             <div class="portfolio-item-summary">            
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Stardew Valley is a game that I have actually never played but am obsessed with nevertheless. The remake is still being worked on
+                    but so far a lot of the base functionality has been added. Move around like noraml with WASD and arrow keys. Left click to use
+                    tools/weapons and right click to interact with chest or people. The HUD is linked to the number keys and is scrollable with the
+                    mouse wheel. Use the 'I' key to open and close inventory and access Status and Crafting.
+                </p>
             </div>
         <!--</section>--> 
         
@@ -71,15 +75,15 @@
 
                     <!--slide images-->
                     <div class="slide first">
-                        <img src="img/cube-fall.png" alt="">
-                    </div>
-                    <div class="slide">
-                        <img src="img/flappy-bird.png" alt="">
-                    </div>
-                    <div class="slide">
                         <video controls loop controls autoplay muted="">
                             <source src="img/stardew-valley-game/stardew-valley-game-vid1.mp4" type="video/mp4">
-                        </video>
+                        </video>                        
+                    </div>
+                    <div class="slide">
+                        <img src="img/stardew-valley-game/stardew-valley-game-img1.png" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="img/stardew-valley-game/stardew-valley-game-img2.png" alt="">
                     </div>
 
                     <!--automatic navigation-->
@@ -149,12 +153,22 @@
                 <!--
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
+                <p>We start off in the video by seeing a highlight square for interactable things in the player's range. Drop items, like acorns 
+                    that are used as seeds for now, will come to you if they are within your pick up radius. The acorns/seeds can then be sown on
+                    plowed dirt and the crop grows in stages shown by different sprites (see slide two). Only dirt can become plowed dirt not grass 
+                    and after a crop is fully grown it needs to be harvest with a plow or it will deteriorate over time and eventually die. Bolders
+                    can be broken down with hammers to get stones which are picked up into your inventory. In the inventory there are two tabs Status 
+                    and Crafting. Status will be health and task and Crafting allows you to quickly craft from known recipes in this case five stones
+                    makes gravel. The top row of the inventory is also your hotbar when the inventory is closed just like in Minecraft.
+                </p>
+                <p>In place is a diaglogue system with clicking to accelerate the roll out of words along with a nice UI close up of the NPC you are 
+                    interacting with. If something in the game is interactable, like the NPC or the chest, an indicator will appear above the GameObject.
+                    Trees can be cut down with an axe to get sticks. All tools are contained in their own data container as seen in slide three. At the 
+                    end of the video the dimming affect is actually the sun seting as there is a day and night sytem in place using a time agent that also
+                    helps crop logic. The time can be seen in the bottom left corner. Not seen in the video is teleportation to another area in the same 
+                    scene (go to left side of dirt) and teleportation to another scene with scene transition and permanent data when you return to first 
+                    scene (go to right side of dirt). There is and Audio manager for music and sound FX and Cinemachine for Camera.
+                </p>  
             </div>
 
             <!--Links-->
