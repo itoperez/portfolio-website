@@ -52,7 +52,7 @@
         <!--<section class="summary">-->
             <div class="portfolio-item-summary">            
                 <p>Sun Temple is a fun target mini game where you have to find and shoot down all the targets before your time runs out.
-                    Play as many time as you like with the option to resart if you lose. Explore the temple and practice trick shots as 
+                    Play as many times as you like with the option to restart if you lose. Explore the temple and practice trick shots as 
                     the projectiles can bounce and hit multiple targets.
                 </p>
             </div>
@@ -152,20 +152,22 @@
                 <!--
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
-                <p>This game uses the default FPS character that includes movement and gun/projectile so my focus was making target to interact
-                    with a given projectile, UI (HUD and end screen), win condition, and add a level area. Since there was going to be multiple 
-                    target I created a target Blueprint class, seen in slide two, that I later used to place said targets around the level. 
+                <p>This game uses the default FPS character that includes movement and gun/projectiles so my focus was making targets to interact
+                    with a given projectile, UI (HUD and end screen), win condition, and adding a level area. Since there were going to be multiple 
+                    targets I created a target Blueprint class, seen in slide two, that I later used to place said targets around the level. 
                     Before a target is hit it is static and after a single collision from the projectile its physics is turned on and a torque 
-                    is added to it to make it spin and make the falling target more dramatic. After detecting the hit disabling multiple subsequent 
-                    hits the UI score is updated by one. Again projectile can bounce and hit multiple targets. 
+                    is added to it to make it spin and make the falling target more cinematic. After detecting a single hit it was necessary to 
+                    disable multiple subsequent hits so that the UI score is updated only once per target. Again a single projectile can bounce 
+                    and hit multiple targets. 
                 </p>
-                <p>The UI needed for the HUD is the score and a timer. The timer is simple and if it runs out the player loses. The score is updated
-                    with the target being hit as stated before but also adding targets to any level will dynamically change the denominator of the 
-                    score to accuately reflect in the number of target hits needed to win. An end screen window pop up if the player runs out time or
-                    wins with different messages and the option to restart and play again. To make it all pretty I used a the default level asset
-                    Sun Temple from Unreal and made it my base level. Up to this point everything done was possible in Unreal Engine 4 so to explore
-                    Unreal Engine 5 I imported to whole project and changed the entire lighting system to use Lumen which is Unreal's new fully 
-                    dynamic global illumination and reflections system. The complete game logic can be seen in the game manager Blueprint in slide three.
+                <p>The UI needed for the HUD is a score and a timer. The timer is counts down and if it reaches zero the player loses. The score 
+                    is updated when a target hit. When level designing, adding additional targets to automatically change the denominator of the 
+                    score to accurately reflect the number of target hits needed to win. An end screen window pop up if the player runs out time or
+                    wins with different respective messages and the option to restart to play again. To make it all pretty I used a the included
+                    level asset Sun Temple from Unreal Engine. Up to this point everything mentioned was was done in Unreal Engine 4 so to explore
+                    Unreal Engine 5 I imported the whole UE4 project into a UE5 project and changed the entire lighting system to use Lumen which 
+                    is Unreal's new fully dynamic global illumination and reflections system. The complete game logic can be seen in the game 
+                    manager Blueprint in slide three.
                 </p>
             </div>
 
@@ -197,7 +199,7 @@
                     </a>
                 </li>         
                 <li class="social-list__item">
-                    <a class="social-list__link" href="https://www.linkedin.com/">
+                    <a class="social-list__link" href="https://www.linkedin.com/in/ito-perez-7a060013a/">
                         <i class="fa-brands fa-linkedin"></i>
                     </a>
                 </li>             

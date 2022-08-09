@@ -51,14 +51,14 @@
         <!--Summary-->
         <!--<section class="summary">-->
             <div class="portfolio-item-summary">            
-                <p>Build stack is game where you build a stack, thats it, see how high you can go. We start of with two spawners on the left 
+                <p>Build stack is a game where you build a stack to see how high you can go. We start off with two spawners on the left 
                     and right sides of the screen which alternate spawning slabs. These slabs move towards the center stack and the player's 
                     job is to line them up with the stack as best they can in order to create the tallest stack possible. To start right click 
-                    or press spacebar and then again to stop and place the current slab. Any over hang gets cut off and all future slabs are 
-                    resized to the size of the remaining peice. The game ends when any slab is stopped and misses the main stack.</p>
-                <p>This is a simpler project that mostly just solidified my confidence in using the Unity editor and having my perferred 
-                    workflow. The most challenging part was the math for spawning both a new remaining and overhang piece after cutting the 
-                    slab. I did learn about gizmos and TextMeshPro but mostly this was a programming side heavy project.</p>
+                    or press spacebar and then again to stop and place the current slab. Any overhang gets cut off and all future slabs are 
+                    resized to the size of the remaining piece. The game ends when any slab is stopped and misses the main stack.</p>
+                <p>This is a simpler project that mostly just solidified my confidence in using Unity and setting up a  
+                    workflow. The most challenging (confusing) part was the math needed for spawning both a new remaining and overhang piece after cutting the 
+                    slab. With this project I learned about gizmos and TextMeshPro but mostly this was a programming heavy project.</p>
             </div>
         <!--</section>--> 
         
@@ -156,13 +156,13 @@
                 <!--
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
-                <p>At the start a cube/slab prefab with if own moving script is instantiate. Every slab knows which direction it is moving by 
-                    knowing from which of the two spawner it came. The current moving slab also handle the player's input and handles the logic 
-                    of slicing the slab into a remaining and hangover peices. The game diffculty increases by faster moving slabs every new 
-                    slab up until slab forty. Going past of stopping before the stack ends the game and trigger a restart option.</p>
-                <p>Other little quality of live things include adjusting the camera height so that the stack is always in center view once it 
-                    starts getting too tall, UI using TextMeshPro is used for current and highscore much like in previous Flappy Bird project, 
-                    and gizmos highlight the spawan points.</p>  
+                <p>At the start a cube/slab prefab with its own moving script is instantiated. Every slab knows which direction it is moving by 
+                    knowing from which of the two spawners it came. The current moving slab also reacts to the player's input and handles the logic 
+                    of slicing itself into a remaining and hangover piece. The game difficulty increases by spawning faster moving slabs up until 
+                    slab forty is placed. Going past or stopping before the stack ends the game and triggers a restart option.</p>
+                <p>Other small quality of live things include adjusting the camera height so that the stack is always in center view once it 
+                    starts getting too tall, UI using TextMeshPro is for displaying current score and highscore much like in previous Flappy Bird 
+                    project, and gizmos used to highlight the spawn points.</p>  
             </div>
 
             <!--Links-->
@@ -198,7 +198,7 @@
                     </a>
                 </li>         
                 <li class="social-list__item">
-                    <a class="social-list__link" href="https://www.linkedin.com/">
+                    <a class="social-list__link" href="https://www.linkedin.com/in/ito-perez-7a060013a/">
                         <i class="fa-brands fa-linkedin"></i>
                     </a>
                 </li>             

@@ -51,12 +51,13 @@
         <!--Summary-->
         <!--<section class="summary">-->
             <div class="portfolio-item-summary">            
-                <p>Flappy Bird is played the same way in this PC remake. Press spacebar or right click
+                <p>Flappy Bird is played the just like it was on mobile in this PC remake. Press spacebar or right click
                     to give the bird an upward boost while avoiding the tube obstacles as well as the ceiling and ground. Jumps are unlimited
-                    and the level is infinite. Dificulty is increase every 10 tubes (maxed at 40) with smaller gaps and faster spawning.</p>
+                    and the level is infinite. Difficulty increases every 10 tubes (maxed at 40) with smaller gaps and smaller space between
+                    tube spawns.</p>
                 <p>This project really taught me how to organize things early on for a full game. The game is complete with UI, game over window,
-                    main menu screen, and loading sceen. I learned about changing prefabs in script and rotating them, UI Canvas, UI text and buttons, 
-                    animating UI elements, persistent data, scene transitions, enums for game state and difficulty, euler angles to make bird 
+                    main menu screen, and loading screen. I learned about changing prefabs in script and rotating them, UI Canvas, UI text and buttons, 
+                    animating UI elements, persistent data, scene transitions, enums for game state and difficulty, and euler angles to make bird 
                     seem top heavy.                   
                 </p>    
             </div>
@@ -156,20 +157,21 @@
                 <!--
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
-                <p>The game will wait for input before starting to flop to bird 'forward'. The score UI (visible while playing) increases upon 
-                    passing a pipe pair. Pipes is a class that contains prefabs, pipe gap size, speed, and other details to move and deactivate the 
-                    pipes. The ground is made of three identical prefabs that cycle with movement. Clouds work the same way as the gound with three prefab
-                    variations.
+                <p>The game will wait for input before starting to flop to bird 'forward'. The score UI (top center) increases when the bird 
+                    passes a pipe pair. Pipe data is stored in a prefab class that includes pipe gap size, speed, and other logic to move 
+                    and deactivate pipes. The ground is made of three identical prefabs that cycle in a closed loop offscreen. Clouds work just 
+                    like the ground with three cloud variations.
                 </p>
-                <p>Death will trigger an animated pop up Game Over window with options to reload the scene or go to a Main
-                    Menu scene. Highscore is updated at this time with message is it is beated. An in between loading scene was added when switching
-                    scenes which is more useful in bigger games but still good to have. The main menu scene has the option to play or quit game.</p>  
+                <p>Dying will trigger an animated pop up Game Over window that has buttons to reload the scene or go to a Main Menu scene. The 
+                    High Score is updated at this time and with a new High Score message if it has been beat. A loading scene was added 
+                    for switching between scenes which is more useful in bigger games that have more data to load but is still good to have. The 
+                    Main Menu scene has buttons with options to play or quit the game.</p>  
             </div>
 
             <!--Links-->
             <div class="portfolio-item-links">
                 <div class="play-link">
-                    <a href="https://play.unity.com/mg/other/webgl-builds-124489" target="_blank" class="btn">Play Game</a>
+                    <a href="https://play.unity.com/mg/other/webgl-builds-229598" target="_blank" class="btn">Play Game</a>
                 </div>
                 <div class="repo-link">
                     <a href="https://github.com/itoperez/flappy-bird" target="_blank" class="btn">Visit Repo</a>  
@@ -199,7 +201,7 @@
                     </a>
                 </li>         
                 <li class="social-list__item">
-                    <a class="social-list__link" href="https://www.linkedin.com/">
+                    <a class="social-list__link" href="https://www.linkedin.com/in/ito-perez-7a060013a/">
                         <i class="fa-brands fa-linkedin"></i>
                     </a>
                 </li>             
