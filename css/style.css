@@ -16,6 +16,8 @@
     --clr-light: #fff;
     --clr-dark: #303030;
     --clr-accent: #16e0bd;
+    --clr-accent-dark: #11a68a;
+    --clr-accent-darkest: #0f9179;
 
     --fs-h1: 3rem;
     --fs-h2: 2.25rem;
@@ -322,12 +324,12 @@ header {
 /* My Services Section */
 
 .my-services {
-    background-color: var(--clr-accent);
+    background-color: var(--clr-accent-darkest);
     background-image: url(../img/services-bg.jpg);
     background-size: cover;
     background-blend-mode: multiply;
     color: var(--clr-light);
-    text-align: center;
+    text-align: center;   
 }
 
 .section__title--services {
@@ -346,18 +348,29 @@ header {
 } 
 
 .services {
-    margin-bottom: 4em;
+    margin-bottom: 3em;
 }
 
 .service {
     max-width: 500px;
     margin: 0 auto;
+    /*display: inline;        /* was blank, this */
+    /*text-align: justify;*/
+}
+
+.justify-paragraph {
+    text-align: justify;
+}
+
+.skills {
+    max-width: 1300px;
+    margin: 0 auto 3em;
 }
 
 @media (min-width: 1000px) {
     .services {
-        display: flex;
-        max-width: 1400px;
+        display: flex;     /* flex, block */
+        max-width: 1500px;  /* 1300px, 1400px */
         margin-left: auto;
         margin-right: auto;
     }
