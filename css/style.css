@@ -68,6 +68,10 @@ video {
 
 strong { font-weight: var(--fw-bold) }
 
+p {
+    text-align: justify;    
+}
+
 :focus {
     outline: 3px solid var(--clr-accent);
     outline-offset: 3px;
@@ -164,12 +168,15 @@ h3 { font-size: var(--fs-h3) }
     padding: 0.25em 1em;
     font-family: var(--ff-secondary);
     margin-bottom:  1em;
+    text-align: start;
 }
+
 
 .section__subtitle--work {
     color: var(--clr-accent);
     font-weight: var(--fw-bold);
     margin-bottom: 2em;
+    text-align: center;
 }
 
 /* header */
@@ -358,9 +365,11 @@ header {
     /*text-align: justify;*/
 }
 
+/*
 .justify-paragraph {
     text-align: justify;
 }
+*/
 
 .skills {
     max-width: 1300px;
