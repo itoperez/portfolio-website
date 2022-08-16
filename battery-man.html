@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">  
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Battery Man</title>
-        <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-        <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
-        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc=" crossorgin="anonymous"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+            integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc="
+            crossorgin="anonymous"
+        />
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
-        +Pro:300,900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css">
+        <link
+            href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
+        +Pro:300,900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/style.css" />
 
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/5fa45d2fa2.js" crossorigin="anonymous"></script>
-
     </head>
     <body>
         <header>
@@ -41,23 +45,22 @@
 
         <!-- Introduction -->
         <section class="intro">
-            <h1 class="section__title section__title--intro">
-                The title <strong>Battery Man</strong>
-            </h1>
+            <h1 class="section__title section__title--intro">The title <strong>Battery Man</strong></h1>
             <p class="section__subtitle section__subtitle--intro">Using Unreal Engine 4</p>
-            <img src="img/battery-man/battery-man-main.png" alt="" class="intro__img">
+            <img src="img/battery-man/battery-man-main.png" alt="" class="intro__img" />
         </section>
 
         <!--Summary-->
         <!--<section class="summary">-->
-            <div class="portfolio-item-summary">            
-                <p>Battery Man is a never ending game about collecting batteries to stay charged and alive. The batteries will fall from the sky
-                    at random and land anywhere in the walkable area. Collect them to keep your life bar from going empty. If the bar
-                    gets completely depleted then the player dies and ragdolls to the floor.                   
-                </p>
-            </div>
-        <!--</section>--> 
-        
+        <div class="portfolio-item-summary">
+            <p>
+                Battery Man is a never ending game about collecting batteries to stay charged and alive. The batteries will fall from the sky at
+                random and land anywhere in the walkable area. Collect them to keep your life bar from going empty. If the bar gets completely
+                depleted then the player dies and ragdolls to the floor.
+            </p>
+        </div>
+        <!--</section>-->
+
         <!-- Gallery -->
         <section class="gallery">
             <!--left scroll button-->
@@ -68,21 +71,21 @@
             <div class="slider">
                 <div class="slides">
                     <!--radio buttons-->
-                    <input type="radio" name="radio-btn" id="radio1">
-                    <input type="radio" name="radio-btn" id="radio2">
-                    <input type="radio" name="radio-btn" id="radio3">
+                    <input type="radio" name="radio-btn" id="radio1" />
+                    <input type="radio" name="radio-btn" id="radio2" />
+                    <input type="radio" name="radio-btn" id="radio3" />
 
                     <!--slide images-->
                     <div class="slide first">
                         <video controls loop controls autoplay muted="">
-                            <source src="img/battery-man/battery-man-vid1.mp4" type="video/mp4">
-                        </video>                        
+                            <source src="img/battery-man/battery-man-vid1.mp4" type="video/mp4" />
+                        </video>
                     </div>
                     <div class="slide">
-                        <img src="img/battery-man/battery-man-img1.png" alt="">
+                        <img src="img/battery-man/battery-man-img1.png" alt="" />
                     </div>
                     <div class="slide">
-                        <img src="img/battery-man/battery-man-img2.png" alt="">
+                        <img src="img/battery-man/battery-man-img2.png" alt="" />
                     </div>
 
                     <!--automatic navigation-->
@@ -90,9 +93,9 @@
                         <div class="auto-btn1"></div>
                         <div class="auto-btn2"></div>
                         <div class="auto-btn3"></div>
-                    </div>            
-                </div>    
-                <!--manual navigation--> 
+                    </div>
+                </div>
+                <!--manual navigation-->
                 <div class="navigation-manual">
                     <label for="radio1" class="manual-btn"></label>
                     <label for="radio2" class="manual-btn"></label>
@@ -107,7 +110,7 @@
 
             <script type="text/javascript">
                 var counter = 1;
-                document.getElementById('radio' + counter).checked = true;
+                document.getElementById("radio" + counter).checked = true;
                 /*
                 counter = 2;
                 setInterval(function(){               
@@ -120,61 +123,56 @@
                 }, 10000);
                 */
                 function scrollL() {
-                    //alert("Counter: " + counter); 
-                    if(counter > 1){
+                    //alert("Counter: " + counter);
+                    if (counter > 1) {
                         counter--;
-                        document.getElementById('radio' + counter).checked = true;
-                    } 
-                    else {
+                        document.getElementById("radio" + counter).checked = true;
+                    } else {
                         counter = 3;
-                        document.getElementById('radio' + counter).checked = true;
-                    }                    
-
-                }  
+                        document.getElementById("radio" + counter).checked = true;
+                    }
+                }
                 function scrollR() {
-                    //alert("Counter: " + counter); 
-                    if(counter < 3){
+                    //alert("Counter: " + counter);
+                    if (counter < 3) {
                         counter++;
-                        document.getElementById('radio' + counter).checked = true;
-                    }      
-                    else {
+                        document.getElementById("radio" + counter).checked = true;
+                    } else {
                         counter = 1;
-                        document.getElementById('radio' + counter).checked = true;
-                    }                
-                }           
+                        document.getElementById("radio" + counter).checked = true;
+                    }
+                }
             </script>
-        </section>          
+        </section>
 
         <!--Info-->
         <section class="info">
             <!--Details -->
-            <div class="portfolio-item-details">          
+            <div class="portfolio-item-details">
                 <!--
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
-                <p>This game is my introduction to making games in Unreal Engine and this one specifically is made using only C++ and 
-                    no blueprints. The character movement is all done from scratch as well and so is the camera movement. The next thing I
-                    had to work on was spawning the batteries and making them disappear after they are collected. Also needed was logic to 
-                    keep track of current battery life and how fast to deplete it. The last thing added was a nice and simple UI.
+                <p>
+                    This game is my introduction to making games in Unreal Engine and this one specifically is made using only C++ and no
+                    blueprints. The character movement is all done from scratch as well and so is the camera movement. The next thing I had to
+                    work on was spawning the batteries and making them disappear after they are collected. Also needed was logic to keep track of
+                    current battery life and how fast to deplete it. The last thing added was a nice and simple UI.
                 </p>
-                
             </div>
 
             <!--Links-->
-            <div class="portfolio-item-link">               
+            <div class="portfolio-item-link">
                 <div class="repo-link">
-                    <a href="https://github.com/itoperez/battery-man" target="_blank" class="btn">Visit Repo</a>  
-                </div>            
+                    <a href="https://github.com/itoperez/battery-man" target="_blank" class="btn">Visit Repo</a>
+                </div>
             </div>
         </section>
-        
-        
 
         <!-- Footer -->
         <footer class="footer">
             <a href="mailto:itoperez83@gmail.com" class="footer__link">itoperez83@gmail.com</a>
             <ul class="social-list">
-                <li class="social-list__item">  
+                <li class="social-list__item">
                     <a class="social-list__link" href="https://github.com/itoperez">
                         <i class="fa-brands fa-github"></i>
                     </a>
@@ -188,16 +186,15 @@
                     <a class="social-list__link" href="https://www.hackerrank.com/itoperez83">
                         <i class="fa-brands fa-hackerrank"></i>
                     </a>
-                </li>         
+                </li>
                 <li class="social-list__item">
                     <a class="social-list__link" href="https://www.linkedin.com/in/ito-perez-7a060013a/">
                         <i class="fa-brands fa-linkedin"></i>
                     </a>
-                </li>             
+                </li>
             </ul>
         </footer>
-        
-        <script src="js/index.js"></script>
 
+        <script src="js/index.js"></script>
     </body>
 </html>
