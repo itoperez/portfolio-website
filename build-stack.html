@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">  
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Build Stack</title>
-        <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-        <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
-        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc=" crossorgin="anonymous"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+            integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc="
+            crossorgin="anonymous"
+        />
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
-        +Pro:300,900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css">
+        <link
+            href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
+        +Pro:300,900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/style.css" />
 
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/5fa45d2fa2.js" crossorigin="anonymous"></script>
-
     </head>
     <body>
         <header>
@@ -41,27 +45,29 @@
 
         <!-- Introduction -->
         <section class="intro">
-            <h1 class="section__title section__title--intro">
-                Clone of mobile game <strong>Build Stack</strong>
-            </h1>
+            <h1 class="section__title section__title--intro">Clone of mobile game <strong>Build Stack</strong></h1>
             <p class="section__subtitle section__subtitle--intro">Using Unity 3D</p>
-            <img src="img/build-stack/build-stack-main.png" alt="" class="intro__img">
+            <img src="img/build-stack/build-stack-main.png" alt="" class="intro__img" />
         </section>
 
         <!--Summary-->
         <!--<section class="summary">-->
-            <div class="portfolio-item-summary">            
-                <p>Build stack is a game where you build a stack to see how high you can go. We start off with two spawners on the left 
-                    and right sides of the screen which alternate spawning slabs. These slabs move towards the center stack and the player's 
-                    job is to line them up with the stack as best they can in order to create the tallest stack possible. To start right click 
-                    or press spacebar and then again to stop and place the current slab. Any overhang gets cut off and all future slabs are 
-                    resized to the size of the remaining piece. The game ends when any slab is stopped and misses the main stack.</p>
-                <p>This is a simpler project that mostly just solidified my confidence in using Unity and setting up a  
-                    workflow. The most challenging (confusing) part was the math needed for spawning both a new remaining and overhang piece after cutting the 
-                    slab. With this project I learned about gizmos and TextMeshPro but mostly this was a programming heavy project.</p>
-            </div>
-        <!--</section>--> 
-        
+        <div class="portfolio-item-summary">
+            <p>
+                Build stack is a game where you build a stack to see how high you can go. We start off with two spawners on the left and right
+                sides of the screen which alternate spawning slabs. These slabs move towards the center stack and the player's job is to line
+                them up with the stack as best they can in order to create the tallest stack possible. To start right click or press spacebar and
+                then again to stop and place the current slab. Any overhang gets cut off and all future slabs are resized to the size of the
+                remaining piece. The game ends when any slab is stopped and misses the main stack.
+            </p>
+            <p>
+                This is a simpler project that mostly just solidified my confidence in using Unity and setting up a workflow. The most
+                challenging (confusing) part was the math needed for spawning both a new remaining and overhang piece after cutting the slab.
+                With this project I learned about gizmos and TextMeshPro but mostly this was a programming heavy project.
+            </p>
+        </div>
+        <!--</section>-->
+
         <!-- Gallery -->
         <section class="gallery">
             <!--left scroll button-->
@@ -72,21 +78,21 @@
             <div class="slider">
                 <div class="slides">
                     <!--radio buttons-->
-                    <input type="radio" name="radio-btn" id="radio1">
-                    <input type="radio" name="radio-btn" id="radio2">
-                    <input type="radio" name="radio-btn" id="radio3">
+                    <input type="radio" name="radio-btn" id="radio1" />
+                    <input type="radio" name="radio-btn" id="radio2" />
+                    <input type="radio" name="radio-btn" id="radio3" />
 
                     <!--slide images-->
                     <div class="slide first">
                         <video controls loop controls autoplay muted="">
-                            <source src="img/build-stack/build-stack-vid1.mp4" type="video/mp4">
-                        </video>                                               
+                            <source src="img/build-stack/build-stack-vid1.mp4" type="video/mp4" />
+                        </video>
                     </div>
                     <div class="slide">
-                        <img src="img/build-stack/build-stack-img1.png" alt="">
+                        <img src="img/build-stack/build-stack-img1.png" alt="" />
                     </div>
-                    <div class="slide">                        
-                        <img src="img/build-stack/build-stack-img2.png" alt=""> 
+                    <div class="slide">
+                        <img src="img/build-stack/build-stack-img2.png" alt="" />
                     </div>
 
                     <!--automatic navigation-->
@@ -94,9 +100,9 @@
                         <div class="auto-btn1"></div>
                         <div class="auto-btn2"></div>
                         <div class="auto-btn3"></div>
-                    </div>            
-                </div>    
-                <!--manual navigation--> 
+                    </div>
+                </div>
+                <!--manual navigation-->
                 <div class="navigation-manual">
                     <label for="radio1" class="manual-btn"></label>
                     <label for="radio2" class="manual-btn"></label>
@@ -111,7 +117,7 @@
 
             <script type="text/javascript">
                 var counter = 1;
-                document.getElementById('radio' + counter).checked = true;
+                document.getElementById("radio" + counter).checked = true;
                 /*
                 counter = 2;
                 setInterval(function(){               
@@ -124,45 +130,46 @@
                 }, 10000);
                 */
                 function scrollL() {
-                    //alert("Counter: " + counter); 
-                    if(counter > 1){
+                    //alert("Counter: " + counter);
+                    if (counter > 1) {
                         counter--;
-                        document.getElementById('radio' + counter).checked = true;
-                    } 
-                    else {
+                        document.getElementById("radio" + counter).checked = true;
+                    } else {
                         counter = 3;
-                        document.getElementById('radio' + counter).checked = true;
-                    }                    
-
-                }  
+                        document.getElementById("radio" + counter).checked = true;
+                    }
+                }
                 function scrollR() {
-                    //alert("Counter: " + counter); 
-                    if(counter < 3){
+                    //alert("Counter: " + counter);
+                    if (counter < 3) {
                         counter++;
-                        document.getElementById('radio' + counter).checked = true;
-                    }      
-                    else {
+                        document.getElementById("radio" + counter).checked = true;
+                    } else {
                         counter = 1;
-                        document.getElementById('radio' + counter).checked = true;
-                    }                
-                }           
+                        document.getElementById("radio" + counter).checked = true;
+                    }
+                }
             </script>
-        </section>          
+        </section>
 
         <!--Info-->
         <section class="info">
             <!--Details -->
-            <div class="portfolio-item-details">          
+            <div class="portfolio-item-details">
                 <!--
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
-                <p>At the start a cube/slab prefab with its own moving script is instantiated. Every slab knows which direction it is moving by 
-                    knowing from which of the two spawners it came. The current moving slab also reacts to the player's input and handles the logic 
-                    of slicing itself into a remaining and hangover piece. The game difficulty increases by spawning faster moving slabs up until 
-                    slab forty is placed. Going past or stopping before the stack ends the game and triggers a restart option.</p>
-                <p>Other small quality of live things include adjusting the camera height so that the stack is always in center view once it 
-                    starts getting too tall, UI using TextMeshPro is for displaying current score and highscore much like in previous Flappy Bird 
-                    project, and gizmos used to highlight the spawn points.</p>  
+                <p>
+                    At the start a cube/slab prefab with its own moving script is instantiated. Every slab knows which direction it is moving by
+                    knowing from which of the two spawners it came. The current moving slab also reacts to the player's input and handles the
+                    logic of slicing itself into a remaining and hangover piece. The game difficulty increases by spawning faster moving slabs up
+                    until slab forty is placed. Going past or stopping before the stack ends the game and triggers a restart option.
+                </p>
+                <p>
+                    Other small quality of live things include adjusting the camera height so that the stack is always in center view once it
+                    starts getting too tall, UI using TextMeshPro is for displaying current score and highscore much like in previous Flappy Bird
+                    project, and gizmos used to highlight the spawn points.
+                </p>
             </div>
 
             <!--Links-->
@@ -171,18 +178,16 @@
                     <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btn">Play Game</a>
                 </div>
                 <div class="repo-link">
-                    <a href="https://github.com/itoperez/build-stack" target="_blank" class="btn">Visit Repo</a>  
-                </div>            
+                    <a href="https://github.com/itoperez/build-stack" target="_blank" class="btn">Visit Repo</a>
+                </div>
             </div>
         </section>
-        
-        
 
         <!-- Footer -->
         <footer class="footer">
             <a href="mailto:itoperez83@gmail.com" class="footer__link">itoperez83@gmail.com</a>
             <ul class="social-list">
-                <li class="social-list__item">  
+                <li class="social-list__item">
                     <a class="social-list__link" href="https://github.com/itoperez">
                         <i class="fa-brands fa-github"></i>
                     </a>
@@ -196,16 +201,15 @@
                     <a class="social-list__link" href="https://www.hackerrank.com/itoperez83">
                         <i class="fa-brands fa-hackerrank"></i>
                     </a>
-                </li>         
+                </li>
                 <li class="social-list__item">
                     <a class="social-list__link" href="https://www.linkedin.com/in/ito-perez-7a060013a/">
                         <i class="fa-brands fa-linkedin"></i>
                     </a>
-                </li>             
+                </li>
             </ul>
         </footer>
-        
-        <script src="js/index.js"></script>
 
+        <script src="js/index.js"></script>
     </body>
 </html>

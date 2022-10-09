@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">  
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Cube Fall</title>
-        <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-        <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
-        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc=" crossorgin="anonymous"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+            integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc="
+            crossorgin="anonymous"
+        />
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
-        +Pro:300,900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css">
+        <link
+            href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
+        +Pro:300,900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/style.css" />
 
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/5fa45d2fa2.js" crossorigin="anonymous"></script>
-
     </head>
     <body>
         <header>
@@ -41,27 +45,25 @@
 
         <!-- Introduction -->
         <section class="intro">
-            <h1 class="section__title section__title--intro">
-                A mobile game <strong>Cube Fall</strong>
-            </h1>
+            <h1 class="section__title section__title--intro">A mobile game <strong>Cube Fall</strong></h1>
             <p class="section__subtitle section__subtitle--intro">Using Unity 2D</p>
-            <img src="img/cube-fall/cube-fall-main.png" alt="" class="intro__img">
+            <img src="img/cube-fall/cube-fall-main.png" alt="" class="intro__img" />
         </section>
 
         <!--Summary-->
         <!--<section class="summary">-->
-            <div class="portfolio-item-summary">            
-                <p>Cube Fall is a game where the objective is to stay alive as long as possible while falling down never ending platforms. To control 
-                    the character's left and right movement you can use WASD or arrow keys. A single jump is added that can be used anytime and will 
-                    reset once you land on another platform. In the future this could be made into a power up found or collected with coins. Score and 
-                    highscore need to be added as well and more UI. This was my first game and really taught me the basics. With this project I learned 
-                    about character movement, colliders, event triggers, animations, audio source, scene managers, kinematic rigid bodies, and parallax 
-                    effect.
-                </p> 
-                    
-            </div>
-        <!--</section>--> 
-        
+        <div class="portfolio-item-summary">
+            <p>
+                Cube Fall is a game where the objective is to stay alive as long as possible while falling down never ending platforms. To
+                control the character's left and right movement you can use WASD or arrow keys. A single jump is added that can be used anytime
+                and will reset once you land on another platform. In the future this could be made into a power up found or collected with coins.
+                Score and highscore need to be added as well and more UI. This was my first game and really taught me the basics. With this
+                project I learned about character movement, colliders, event triggers, animations, audio source, scene managers, kinematic rigid
+                bodies, and parallax effect.
+            </p>
+        </div>
+        <!--</section>-->
+
         <!-- Gallery -->
         <section class="gallery">
             <!--left scroll button-->
@@ -72,21 +74,21 @@
             <div class="slider">
                 <div class="slides">
                     <!--radio buttons-->
-                    <input type="radio" name="radio-btn" id="radio1">
-                    <input type="radio" name="radio-btn" id="radio2">
-                    <input type="radio" name="radio-btn" id="radio3">
+                    <input type="radio" name="radio-btn" id="radio1" />
+                    <input type="radio" name="radio-btn" id="radio2" />
+                    <input type="radio" name="radio-btn" id="radio3" />
 
                     <!--slide images-->
                     <div class="slide first">
                         <video controls loop controls autoplay muted="">
-                            <source src="img/cube-fall/cube-fall-vid1.mp4" type="video/mp4">
-                        </video>                        
+                            <source src="img/cube-fall/cube-fall-vid1.mp4" type="video/mp4" />
+                        </video>
                     </div>
                     <div class="slide">
-                        <img src="img/cube-fall/cube-fall-img1.png" alt="">                        
+                        <img src="img/cube-fall/cube-fall-img1.png" alt="" />
                     </div>
                     <div class="slide">
-                        <img src="img/cube-fall/cube-fall-img2.png" alt="">
+                        <img src="img/cube-fall/cube-fall-img2.png" alt="" />
                     </div>
 
                     <!--automatic navigation-->
@@ -94,9 +96,9 @@
                         <div class="auto-btn1"></div>
                         <div class="auto-btn2"></div>
                         <div class="auto-btn3"></div>
-                    </div>            
-                </div>    
-                <!--manual navigation--> 
+                    </div>
+                </div>
+                <!--manual navigation-->
                 <div class="navigation-manual">
                     <label for="radio1" class="manual-btn"></label>
                     <label for="radio2" class="manual-btn"></label>
@@ -111,7 +113,7 @@
 
             <script type="text/javascript">
                 var counter = 1;
-                document.getElementById('radio' + counter).checked = true;
+                document.getElementById("radio" + counter).checked = true;
                 /*
                 counter = 2;
                 setInterval(function(){               
@@ -124,45 +126,46 @@
                 }, 10000);
                 */
                 function scrollL() {
-                    //alert("Counter: " + counter); 
-                    if(counter > 1){
+                    //alert("Counter: " + counter);
+                    if (counter > 1) {
                         counter--;
-                        document.getElementById('radio' + counter).checked = true;
-                    } 
-                    else {
+                        document.getElementById("radio" + counter).checked = true;
+                    } else {
                         counter = 3;
-                        document.getElementById('radio' + counter).checked = true;
-                    }                    
-
-                }  
+                        document.getElementById("radio" + counter).checked = true;
+                    }
+                }
                 function scrollR() {
-                    //alert("Counter: " + counter); 
-                    if(counter < 3){
+                    //alert("Counter: " + counter);
+                    if (counter < 3) {
                         counter++;
-                        document.getElementById('radio' + counter).checked = true;
-                    }      
-                    else {
+                        document.getElementById("radio" + counter).checked = true;
+                    } else {
                         counter = 1;
-                        document.getElementById('radio' + counter).checked = true;
-                    }                
-                }           
+                        document.getElementById("radio" + counter).checked = true;
+                    }
+                }
             </script>
-        </section>          
+        </section>
 
         <!--Info-->
         <section class="info">
             <!--Details -->
-            <div class="portfolio-item-details">          
+            <div class="portfolio-item-details">
                 <!--
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
-                <p>The game starts with the cube character in the center of the screen. The player controls left and right movement of the 
-                    cube and collisions with its environment will rotate it on its z-axis. Left and right bounds don't allow the cube to 
-                    extend past the visible area, upper spike bounds trigger a death as does a lower falling bound.</p>
-                <p>Platform types include: regular, moving, spike, and breakable. The four kinematic platforms have animations with some 
-                    affecting the player's movement (moving) and others triggering death (spike). They are spawned from below and with the help 
-                    of a background parallax effect they sell the illusion of falling. A sound manager controls the sound effects and background 
-                    music and a game manager is used to restart the game after a death is triggered.</p>
+                <p>
+                    The game starts with the cube character in the center of the screen. The player controls left and right movement of the cube
+                    and collisions with its environment will rotate it on its z-axis. Left and right bounds don't allow the cube to extend past
+                    the visible area, upper spike bounds trigger a death as does a lower falling bound.
+                </p>
+                <p>
+                    Platform types include: regular, moving, spike, and breakable. The four kinematic platforms have animations with some
+                    affecting the player's movement (moving) and others triggering death (spike). They are spawned from below and with the help
+                    of a background parallax effect they sell the illusion of falling. A sound manager controls the sound effects and background
+                    music and a game manager is used to restart the game after a death is triggered.
+                </p>
             </div>
 
             <!--Links-->
@@ -171,18 +174,16 @@
                     <a href="https://play.unity.com/mg/other/webgl-builds-229578" target="_blank" class="btn">Play Game</a>
                 </div>
                 <div class="repo-link">
-                    <a href="https://github.com/itoperez/cube-fall" target="_blank" class="btn">Visit Repo</a>  
-                </div>            
+                    <a href="https://github.com/itoperez/cube-fall" target="_blank" class="btn">Visit Repo</a>
+                </div>
             </div>
         </section>
-        
-        
 
         <!-- Footer -->
         <footer class="footer">
             <a href="mailto:itoperez83@gmail.com" class="footer__link">itoperez83@gmail.com</a>
             <ul class="social-list">
-                <li class="social-list__item">  
+                <li class="social-list__item">
                     <a class="social-list__link" href="https://github.com/itoperez">
                         <i class="fa-brands fa-github"></i>
                     </a>
@@ -196,16 +197,15 @@
                     <a class="social-list__link" href="https://www.hackerrank.com/itoperez83">
                         <i class="fa-brands fa-hackerrank"></i>
                     </a>
-                </li>         
+                </li>
                 <li class="social-list__item">
                     <a class="social-list__link" href="https://www.linkedin.com/in/ito-perez-7a060013a/">
                         <i class="fa-brands fa-linkedin"></i>
                     </a>
-                </li>             
+                </li>
             </ul>
         </footer>
-        
-        <script src="js/index.js"></script>
 
+        <script src="js/index.js"></script>
     </body>
 </html>
