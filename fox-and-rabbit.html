@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Fox and Rabbit</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+            integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc="
+            crossorgin="anonymous"
+        />
+
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
+        +Pro:300,900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/5fa45d2fa2.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <!--
+            <div class="logo">
+                <img src="img/dev-logo.png" alt="">
+            </div>
+            -->
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="index.html#services" class="nav__link">My Services</a></li>
+                    <li class="nav__item"><a href="index.html#about" class="nav__link">About Me</a></li>
+                    <li class="nav__item"><a href="index.html#work" class="nav__link">My Work</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Introduction -->
+        <section class="intro">
+            <h1 class="section__title section__title--intro">Mini World <strong>Fox and Rabbit</strong></h1>
+            <p class="section__subtitle section__subtitle--intro">An Interactive 3D World</p>
+            <img src="img/fox-and-rabbit/fox-and-rabbit-main.png" alt="" class="intro__img" />
+        </section>
+
+        <!--Summary-->
+        <!--<section class="summary">-->
+        <div class="portfolio-item-summary">
+            <p>
+                Fox and Rabbit started out as a simple assignment to create a 3D interactable world with at least three different interactions.
+                Besides the core assignment requirements I really wanted to test myself here and see how much I could get done in just one day so
+                this project became a bit of a mini game jam. All assest were free or from previous projects, all of the code if from scratch
+                (except the fireflies flight movement, from a previous project), and everything was completeted in 21 hours.
+            </p>
+        </div>
+        <!--</section>-->
+
+        <!-- Gallery -->
+        <section class="gallery">
+            <!--left scroll button-->
+            <div>
+                <button class="btnScroll" onclick="scrollL()"><i class="fa-solid fa-angle-left"></i></button>
+            </div>
+
+            <div class="slider">
+                <div class="slides">
+                    <!--radio buttons-->
+                    <input type="radio" name="radio-btn" id="radio1" />
+                    <input type="radio" name="radio-btn" id="radio2" />
+                    <input type="radio" name="radio-btn" id="radio3" />
+
+                    <!--slide images-->
+                    <div class="slide first">
+                        <video controls loop controls autoplay muted="">
+                            <source src="img/fox-and-rabbit/fox-and-rabbit-vid1.mp4" type="video/mp4" />
+                        </video>
+                        <!--
+                        <img src="img/gravity-balls/gravity-balls-clip1.gif" alt="">
+                        -->
+                    </div>
+                    <div class="slide">
+                        <video controls loop controls autoplay muted="">
+                            <source src="img/fox-and-rabbit/fox-and-rabbit-vid2.mp4" type="video/mp4" />
+                        </video>
+                        <!--
+                        <img src="img/gravity-balls/gravity-balls-clip3.gif" alt="">
+                        -->
+                    </div>
+                    <div class="slide">
+                        <img src="img/fox-and-rabbit/fox-and-rabbit-img1.png" alt="" />
+                    </div>
+
+                    <!--automatic navigation-->
+                    <div class="navigation-auto">
+                        <div class="auto-btn1"></div>
+                        <div class="auto-btn2"></div>
+                        <div class="auto-btn3"></div>
+                    </div>
+                </div>
+                <!--manual navigation-->
+                <div class="navigation-manual">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                </div>
+            </div>
+
+            <!--right scroll button-->
+            <div>
+                <button class="btnScroll" onclick="scrollR()"><i class="fa-solid fa-angle-right"></i></button>
+            </div>
+
+            <script type="text/javascript">
+                var counter = 1;
+                document.getElementById("radio" + counter).checked = true;
+                /*
+                counter = 2;
+                setInterval(function(){               
+                    document.getElementById('radio' + counter).checked = true;
+                    counter++;
+                    if(counter > 3) {
+                        counter = 1;
+                    }
+                        
+                }, 10000);
+                */
+                function scrollL() {
+                    //alert("Counter: " + counter);
+                    if (counter > 1) {
+                        counter--;
+                        document.getElementById("radio" + counter).checked = true;
+                    } else {
+                        counter = 3;
+                        document.getElementById("radio" + counter).checked = true;
+                    }
+                }
+                function scrollR() {
+                    //alert("Counter: " + counter);
+                    if (counter < 3) {
+                        counter++;
+                        document.getElementById("radio" + counter).checked = true;
+                    } else {
+                        counter = 1;
+                        document.getElementById("radio" + counter).checked = true;
+                    }
+                }
+            </script>
+        </section>
+
+        <!--Info-->
+        <section class="info">
+            <!--Details -->
+            <div class="portfolio-item-details">
+                <!--
+                <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
+                -->
+                <p>
+                    Although this was a short project I wanted to make the game feel as complete as possible so I spent most of my time in level
+                    design. I imported the terrain from an old assignment and use the trees terrain tool to paint trees in. The terrain was baked
+                    and I added a Nav Mesh for the rabbits I would release which have there Nav Mesh Agent and script to wander around the
+                    playable area. The plants and rocks were individually placed and the skybox is custom made. Ambient sounds were added and
+                    fireflies placed to make the world fee alive (another assignment requirement). The fox and rabbit were imported separately
+                    and after setting up the models with their textures I made sure their animations played when they were supposed to and added
+                    a character controller for the fox.
+                </p>
+                <p>
+                    Now that the main world is set, I had to rush a bit with the interaction. I first added a chest that opens when you approach,
+                    then flowers that needed to be smelled, rabbits to be freed from crates, and mushrooms that you had to jump on like a
+                    trampoline. All interactable objects have sounds to let the player know that they have interacted with them correctly. To
+                    keep track of the interactions need to unlock the ultimate goal behind the electric fence (lighting from an inported package)
+                    I made a simple UI accessible by pressing the ESC key. Overall this project was really fun and solidified my confidence in
+                    being able to create a completed something from start to finish on my own.
+                </p>
+            </div>
+
+            <!--Links-->
+            <div class="portfolio-item-links">
+                <div class="play-link">
+                    <a href="https://play.unity.com/mg/other/fox-and-rabbit-1-1" target="_blank" class="btn">Play Game</a>
+                </div>
+                <div class="repo-link">
+                    <a href="https://github.com/itoperez/fox-and-rabbit" target="_blank" class="btn">Visit Repo</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="mailto:itoperez83@gmail.com" class="footer__link">itoperez83@gmail.com</a>
+            <ul class="social-list">
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://www.linkedin.com/in/ito-perez-7a060013a/">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://youtube.com/@itoperez8226/videos">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://github.com/itoperez">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://play.unity.com/u/itoperez83">
+                        <i class="fa-brands fa-unity"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://www.hackerrank.com/itoperez83">
+                        <i class="fa-brands fa-hackerrank"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+
+        <script src="js/index.js"></script>
+    </body>
+</html>
