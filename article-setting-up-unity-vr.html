@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>DevIto Portfolio Wedsite</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+            integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc="
+            crossorgin="anonymous"
+        />
+
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
+        +Pro:300,900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/5fa45d2fa2.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <!--
+            <div class="logo">
+                <img src="img/dev-logo.png" alt="">
+            </div>
+            -->
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="index.html#services" class="nav__link">My Services</a></li>
+                    <li class="nav__item"><a href="index.html#about" class="nav__link">About Me</a></li>
+                    <li class="nav__item"><a href="index.html#work" class="nav__link">My Work</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Introduction -->
+        <section class="intro__article">
+            <h1 class="section__title section__title--intro">Setting Up Unity VR</h1>
+            <p class="section__subtitle section__article--intro">June 5th 2023 - [Complete Beginner]</p>
+            <!--<img src="img/build-stack.png" alt="" class="intro__img" /> -->
+        </section>
+
+        <!--Article-->
+        <section class="article-item-details">
+            <!--Details -->
+            <p>
+                If this is your first time working in Unity VR I recommend starting a new project with the VR Core template. All the recommended
+                packages and base settings will be included leaving us with very little left to set up.
+            </p>
+
+            <h3>Add a VR Template</h3>
+            <p>
+                Open your Unity Hub and under ‘All templates’ search for ‘VR Core’ (this series will be using Unity Editor Version 2022.1.19f).
+                Select or download and select the template if you haven’t already. Give your project a name and pick a location. Click the Create
+                Project button.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-setting-up-unity-vr/a-suuvr-img1.png" alt="" class="article-image-center" />
+            </div>
+
+            <h3>Plug-in Provider</h3>
+            <p>
+                Once your project has been created you’ll need to decide on a Plug-in Provider. Personally I like to use OpenXR because it will
+                run on multiple types of headset. From the top left menu bar go to Edit and select Project Settings, this will open a new Project
+                Settings window. Navigate to XR Plug-in Management and select OpenXR.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-setting-up-unity-vr/a-suuvr-img2.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                Now that we’ve chosen OpenXR we need to tell Unity which headset we are going to be working with while building our project. This
+                is done by adding an interaction profile. You’ll notice a little yellow ‘Issues triangle’ beside the checked OpenXR option. Just
+                hovering over it gives a quick tip, go ahead and click on it to open a small window detailing the ‘Issues’ so we can fix them.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-setting-up-unity-vr/a-suuvr-img3.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                Press the Edit button in the Issues window. It’ll take you to the OpenXR tab where you can click on the plus button under
+                Interaction Profiles to add a new Interaction Profile. In my case I’ll be using an Oculus Quest 2 so I’ll select the Oculus Touch
+                Controller Profile. Choose the appropriate profile for your specific headset.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-setting-up-unity-vr/a-suuvr-img4.png" alt="" class="article-image-center" />
+            </div>
+            <div class="article-image-block">
+                <img src="img/article-setting-up-unity-vr/a-suuvr-img5.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                Put on your headset, jump into your Quest Link (follow this article from Meta if you haven’t
+                <a
+                    href="https://www.meta.com/help/quest/articles/headsets-and-accessories/oculus-link/connect-link-with-quest-2/"
+                    target="_blank"
+                    >Set Up a Quest Link</a
+                >
+                before), and press the Play button in the Unity Editor to start the VR experience!
+            </p>
+
+            <h3>First Start Up</h3>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-setting-up-unity-vr/a-suuvr-vid1-StartingUp.mp4" type="video/mp4" />
+            </video>
+
+            <h3>Clipping - Before</h3>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-setting-up-unity-vr/a-suuvr-vid2-DefaultClipping.mp4" type="video/mp4" />
+            </video>
+
+            <h3>Clipping - After</h3>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-setting-up-unity-vr/a-suuvr-vid3-AfterClipping.mp4" type="video/mp4" />
+            </video>
+            <h3>Locomotion</h3>
+            <p>
+                If you want to move around and navigate through the empty plane look up tutorials on Locomotion. The two main ways of moving are
+                Continuous Movement and Teleportation. For looking around (besides just moving your head) look up how to add a Snap Turn
+                Provider.
+            </p>
+            <h3>Hand Presence</h3>
+            <p>
+                If you don’t like the default hand controllers look up tutorials on custom VR hands that can even be animated when grabbing or
+                pointing at things. For an even more advanced controller system look up Hand Tracking in VR where you don’t even need to hold
+                your physical controllers.
+            </p>
+            <h3>Interactions (Picking Things Up)</h3>
+            <p>
+                If you want to learn how to use your hand controllers to interact with game objects in your VR world check out the next blog:
+                <a href="article-interactions-in-unity-vr.html">Interactions in Unity VR</a>
+                where you can learn the types of interactions you can do and how to add them to your project.
+            </p>
+
+            <!--Links-->
+            <div class="portfolio-item-links">
+                <div class="tooltip">
+                    <span class="tooltiptext">None, this is the first.</span>
+                    <div class="play-link">
+                        <a href="article-setting-up-unity-vr.html" class="btn">Last Blog</a>
+                    </div>
+                </div>
+
+                <div class="tooltip">
+                    <span class="tooltiptext">Interactions in Unity VR</span>
+                    <div class="repo-link">
+                        <a href="article-interactions-in-unity-vr.html" class="btn">Next Blog</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="mailto:itoperez83@gmail.com" class="footer__link">itoperez83@gmail.com</a>
+            <ul class="social-list">
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://www.linkedin.com/in/ito-perez-7a060013a/">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://youtube.com/@itoperez8226/videos">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://github.com/itoperez">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://play.unity.com/u/itoperez83">
+                        <i class="fa-brands fa-unity"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://www.hackerrank.com/itoperez83">
+                        <i class="fa-brands fa-hackerrank"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+
+        <script src="js/index.js"></script>
+    </body>
+</html>

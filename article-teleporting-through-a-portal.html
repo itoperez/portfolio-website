@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>DevIto Portfolio Wedsite</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+            integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc="
+            crossorgin="anonymous"
+        />
+
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
+        +Pro:300,900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/5fa45d2fa2.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <!--
+            <div class="logo">
+                <img src="img/dev-logo.png" alt="">
+            </div>
+            -->
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="index.html#services" class="nav__link">My Services</a></li>
+                    <li class="nav__item"><a href="index.html#about" class="nav__link">About Me</a></li>
+                    <li class="nav__item"><a href="index.html#work" class="nav__link">My Work</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Introduction -->
+        <section class="intro__article">
+            <h1 class="section__title section__title--intro">Teleporting Through a Portal</h1>
+            <p class="section__subtitle section__article--intro">June 5th 2023 - [Beginner]</p>
+            <!--<img src="img/build-stack.png" alt="" class="intro__img" /> -->
+        </section>
+
+        <!--Article-->
+        <section class="article-item-details">
+            <!--Details -->
+            <p>
+                <i
+                    >This tutorial is in reference to how teleportation works in my VR Game <a href="nyu-capstone.html">NYU Capstone Project</a>.
+                    In that game world you are given a polaroid camera that you can use to take pictures. Those pictures activate the several
+                    large polaroid portals located around the level. Flying through the portals teleports you back to where the picture was
+                    taken. The portals will track your movement in order to face you for what I believe to be a more magical feeling
+                    interaction.</i
+                >
+            </p>
+            <h2><b>GIF of what we’re going to be making</b></h2>
+
+            <h3>Setting Up Portal GameObject</h3>
+            <p>
+                Create a new script component named “PortalManager” and attach it to every object you want to be a portal. These portal objects
+                should include a collider with its ‘Is Trigger’ box checked and a Rigidbody with its ‘Is Kinematic’ checked.
+            </p>
+            <h2><b>GIF of Adding Components</b></h2>
+            <p>Make sure to resize the collider to fix the portal area you want to use to trigger the teleporting.</p>
+            <h2><b>GIF of Resizing</b></h2>
+
+            <h2>PortalManager Script</h2>
+            <p><i>The entire commented script can be found at the bottom of this section. Jump to: entire script.</i></p>
+
+            <h3>Variables</h3>
+            <p>
+                To start we are going to need five variables, all private so that no other script can edit them and all tagged with
+                [SerializeFeild] to allow us to set them in the Editor.
+            </p>
+            <h2><b>Pic of Five Variables added</b></h2>
+            <p>
+                <i
+                    ><u>Quick Tip 1</u> - [Tooltip(“...”)]: Tooltips aren’t necessary but are nice to have so that when we hover over a variable
+                    in the Editor we can see what it is going to be used for like a hint or a note.
+                </i>
+            </p>
+            <p>
+                <b>photoCapture</b>: a script that manages taking pictures for the Polaroid camera and developing them. There is a boolean in
+                this script that we want to reference that tells us when the portal can be active. In that script the boolean is false when no
+                picture to teleport to has been taken or if a picture is currently being developed. It's set to true whenever a photo is fully
+                developed. Link to PhotoCapture.<br />
+                <b>XROrigin</b>: the player object that will be teleported through the portal.<br />
+                <b>pictureTakenLocation</b>: the position and rotation that the player will teleport to.<br />
+                <b>playerHead</b>: the object the portal will look at.<br />
+                <b>lookAtMinDistance</b>: used to determine whether the portal should or shouldn’t face the player.
+            </p>
+
+            <h3>Portal Movements</h3>
+            <p>
+                Create a private PortalMovements() function that will be called every frame in the Update() function. Here we want to set up a
+                couple rules for when a portal should face the player and when it should stand still. If you don’t want the portal to move at
+                all, skip ahead to the OnTriggerEnter section.
+            </p>
+            <p>
+                We are going to want to check if the
+                <a href="https://docs.unity3d.com/ScriptReference/Vector3.Distance.html" target="_blank">Distance()</a> between the portal and
+                the player’s head is greater than the lookAtMinDistance. If it is, we’ll use the
+                <a href="https://docs.unity3d.com/ScriptReference/Transform.LookAt.html" target="_blank">LookAt()</a> function to have the portal
+                (transform) face the playerHead. When you are less than or equal that minimum distance, then the portal needs to stand still to
+                make teleporting and interacting with it possible.
+            </p>
+            <h2><b>Pic of If() Section</b></h2>
+            <p>
+                Inside our else statement the portal should stand still because the player is inside the minimum distance. But just in case there
+                is the possibility that the player might want to sneak a peek behind the portal. Now that's not allowed because it's blank and
+                ugly back there so to prevent that we’ll use the dot product to check if the player is in front or behind the portal. If the
+                player steps behind the portal it will snap to face the player again.
+            </p>
+            <h2><b>GIF of Trying to Sneak around portal before and after</b></h2>
+            <h2><b>Pic of Else() Section</b></h2>
+            <p>
+                This code snippet is taken directly from Unity’s documentation on how to use the
+                <a href="https://docs.unity3d.com/ScriptReference/Vector3.Dot.html" target="_blank">Dot()</a> product function. I used their
+                exact example and with our variables.
+            </p>
+
+            <h3>OnTrigger Functions</h3>
+            <p>
+                Below we will use two of the three Messages functions afforded to us when we use colliders with ‘Is Trigger’ checked. The two
+                functions we will use are
+                <a href="https://docs.unity3d.com/ScriptReference/Collider.OnTriggerEnter.html" target="_blank">OnTriggerEnter()</a> and
+                <a href="https://docs.unity3d.com/ScriptReference/Collider.OnTriggerExit.html" target="_blank">OnTriggerExit()</a> and there
+                exist a third unused one called
+                <a href="https://docs.unity3d.com/ScriptReference/Collider.OnTriggerStay.html" target="_blank">OnTriggerStay()</a>. Here is the
+                full list documentation of all
+                <a href="https://docs.unity3d.com/ScriptReference/Collider.html" target="_blank">Collider functions</a>.
+            </p>
+
+            <h3>OnTriggerEnter(Collider other)</h3>
+            <p>
+                Using this function we can keep track of other objects (that have colliders) that collide with the portal collider (added above)
+                attached to the same portal object this PortalManager script is attached to. What is really being kept track of is the other
+                objects colliders which are stored in variable other.
+            </p>
+            <p>
+                To help identify those other objects that collide with the portal will be checking for their gameObject name by using
+                <a href="https://docs.unity3d.com/ScriptReference/Object-name.html" target="_blank">Object.name</a>
+                or in our case other.gameObject.name (because variable other is of type Collider so we must use other.gameObject to get a
+                reference the Object before we get the Object.name).
+            </p>
+            <h2><b>Pic of Controller Section</b></h2>
+            <p>
+                If you don’t plan on interacting with the portal to make ripples skip this code snippet. This Ripples Blog will teach you how to
+                create a shader and script that your hand controllers can interact with to create a sort of ripple effect. Here’s a preview of
+                the shader and script attached to a working polaroid portal.
+            </p>
+            <h2><b>Gif of ripple portal</b></h2>
+            <p>
+                We want to look out for our hand objects, in our case named “RightController” and “LeftController”, so that we can set them up to
+                interact with the portal when they are colliding with it. When they collide with the portal we can switch their collider’s ‘Is
+                Trigger’ flag to uncheck or false. This now allows our hands to have physical collisions and which we need to create ripples on
+                the portal.
+            </p>
+            <h2><b>Pic of TPTrigger Section</b></h2>
+            <p>
+                Now to teleport the player to the pictureTakenLocation we’ll need to check if the gameObject that collided with the portal’s
+                collider is named “TPTrigger” and if it is the we can set the position and rotation of the player or XROrigin to the position and
+                rotation of the pictureTakenLocation.
+            </p>
+            <p>
+                In my case I made the “TPTrigger” gameObject a child of the player main camera with a sphere collider roughly the size of a human
+                head.
+            </p>
+            <h2><b>GIF of TPTrigger GO</b></h2>
+            <p>
+                <i
+                    ><u>Quick Tip 3</u> - Hard Coding Strings: Best practice is to not hard code strings like we did for the RightContoller,
+                    LeftController, and TPTrigger. This is because we might change the name of the gameObject in the Editor and accidentally
+                    forget to change the name in any script that may want to find that object. Best practice may look like creating a public tags
+                    class that all scripts reference for the names of objects scripts might want to find. The reason for this is if something
+                    breaks you’ll only have to fix it in one place not in all the scripts where you hard coded a string.
+                </i>
+            </p>
+
+            <h3>OnTriggerExit(Collider other)</h3>
+            <p>
+                Here we simply want to set hand controller colliders back to being triggers by checking or setting true their ‘Is Trigger’ flags.
+                We do this to continue to prevent unwanted collisions with the rest of the level.
+            </p>
+            <h2><b>Pic of Controller Section</b></h2>
+
+            <!--Links-->
+            <div class="portfolio-item-links">
+                <div class="tooltip">
+                    <span class="tooltiptext">Name of Last Blog</span>
+                    <div class="play-link">
+                        <a href="article-setting-up-unity-vr.html" class="btn">Last Blog</a>
+                    </div>
+                </div>
+
+                <div class="tooltip">
+                    <span class="tooltiptext">Name of Next Blog</span>
+                    <div class="repo-link">
+                        <a href="article-setting-up-unity-vr.html" class="btn">Next Blog</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="mailto:itoperez83@gmail.com" class="footer__link">itoperez83@gmail.com</a>
+            <ul class="social-list">
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://www.linkedin.com/in/ito-perez-7a060013a/">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://youtube.com/@itoperez8226/videos">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://github.com/itoperez">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://play.unity.com/u/itoperez83">
+                        <i class="fa-brands fa-unity"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://www.hackerrank.com/itoperez83">
+                        <i class="fa-brands fa-hackerrank"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+
+        <script src="js/index.js"></script>
+    </body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Complex Interactions</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+            integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc="
+            crossorgin="anonymous"
+        />
+
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
+        +Pro:300,900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/5fa45d2fa2.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <!--
+            <div class="logo">
+                <img src="img/dev-logo.png" alt="">
+            </div>
+            -->
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="index.html#services" class="nav__link">My Services</a></li>
+                    <li class="nav__item"><a href="index.html#about" class="nav__link">About Me</a></li>
+                    <li class="nav__item"><a href="index.html#work" class="nav__link">My Work</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Introduction -->
+        <section class="intro">
+            <h1 class="section__title section__title--intro">Complex <strong>Interactions</strong></h1>
+            <p class="section__subtitle section__subtitle--intro">With Custom Hand Animations</p>
+            <img src="img/complex-interactions/complex-interactions-main.png" alt="" class="intro__img" />
+        </section>
+
+        <!--Summary-->
+        <!--<section class="summary">-->
+        <div class="portfolio-item-summary">
+            <p>
+                Adding complex interactions in Unity VR is a great way to improve immersion. The three videos below showcase posible sinarios for
+                using complex interactions. The first video shows custom hand animations on everyday objects along with complex interactions for
+                the dial and slider. The second video adds actions to the complex interactions through supporting scripts. The last video
+                combines it all together, complex interaction for teleportation with custom hand animation with VFX.
+            </p>
+        </div>
+        <!--</section>-->
+
+        <!-- Gallery -->
+        <section class="gallery">
+            <!--left scroll button-->
+            <div>
+                <button class="btnScroll" onclick="scrollL()"><i class="fa-solid fa-angle-left"></i></button>
+            </div>
+
+            <div class="slider">
+                <div class="slides">
+                    <!--radio buttons-->
+                    <input type="radio" name="radio-btn" id="radio1" />
+                    <input type="radio" name="radio-btn" id="radio2" />
+                    <input type="radio" name="radio-btn" id="radio3" />
+
+                    <!--slide images-->
+                    <div class="slide first">
+                        <video controls loop controls autoplay muted="">
+                            <source src="img/complex-interactions/complex-interactions-vid1.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                    <div class="slide">
+                        <video controls loop controls autoplay muted="">
+                            <source src="img/complex-interactions/complex-interactions-vid2.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                    <div class="slide">
+                        <video controls loop controls autoplay muted="">
+                            <source src="img/complex-interactions/complex-interactions-vid3.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+
+                    <!--automatic navigation-->
+                    <div class="navigation-auto">
+                        <div class="auto-btn1"></div>
+                        <div class="auto-btn2"></div>
+                        <div class="auto-btn3"></div>
+                    </div>
+                </div>
+                <!--manual navigation-->
+                <div class="navigation-manual">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                </div>
+            </div>
+
+            <!--right scroll button-->
+            <div>
+                <button class="btnScroll" onclick="scrollR()"><i class="fa-solid fa-angle-right"></i></button>
+            </div>
+
+            <script type="text/javascript">
+                var counter = 1;
+                document.getElementById("radio" + counter).checked = true;
+                /*
+                counter = 2;
+                setInterval(function(){               
+                    document.getElementById('radio' + counter).checked = true;
+                    counter++;
+                    if(counter > 3) {
+                        counter = 1;
+                    }
+                        
+                }, 10000);
+                */
+                function scrollL() {
+                    //alert("Counter: " + counter);
+                    if (counter > 1) {
+                        counter--;
+                        document.getElementById("radio" + counter).checked = true;
+                    } else {
+                        counter = 3;
+                        document.getElementById("radio" + counter).checked = true;
+                    }
+                }
+                function scrollR() {
+                    //alert("Counter: " + counter);
+                    if (counter < 3) {
+                        counter++;
+                        document.getElementById("radio" + counter).checked = true;
+                    } else {
+                        counter = 1;
+                        document.getElementById("radio" + counter).checked = true;
+                    }
+                }
+            </script>
+        </section>
+
+        <!--Info-->
+        <section class="info">
+            <!--Details -->
+            <div class="portfolio-item-details">
+                <!--
+                <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
+                -->
+                <p>
+                    Custom hand animations are usually done outside of Unity, however all the animation and rigging for the hands in the first
+                    video were made in Unity with the help of a custom script using scriptable objects. The hand asset used has a skinned mesh
+                    required for these custom animations. In the second video I have created scripts for levers, sliders, buttons, switches, and
+                    a throttle all made with the idea to be reusable in any application.
+                </p>
+                <p>
+                    The last video shows a unique way to teleport in VR for such cases where you want to keep both controllers as Direct
+                    Interactors. The teleporting wand was also my introduction to VFX and I built upon it in future projects like for flying in
+                    my Capstone project.
+                </p>
+            </div>
+
+            <!--Links-->
+            <div class="portfolio-item-links">
+                <div class="play-link">
+                    <a href="https://drive.google.com/drive/folders/16txKRqFNYX1GCpgrh8drE6NFlHn63fRt?usp=sharing" target="_blank" class="btn"
+                        >Asset Kit</a
+                    >
+                </div>
+                <div class="repo-link">
+                    <a href="https://github.com/itoperez/cube-fall" target="_blank" class="btn">Visit Repo</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="mailto:itoperez83@gmail.com" class="footer__link">itoperez83@gmail.com</a>
+            <ul class="social-list">
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://www.linkedin.com/in/ito-perez-7a060013a/">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://youtube.com/@itoperez8226/videos">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://github.com/itoperez">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://play.unity.com/u/itoperez83">
+                        <i class="fa-brands fa-unity"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://www.hackerrank.com/itoperez83">
+                        <i class="fa-brands fa-hackerrank"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+
+        <script src="js/index.js"></script>
+    </body>
+</html>

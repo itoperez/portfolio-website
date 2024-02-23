@@ -182,7 +182,8 @@ h3 {
 }
 
 .section__subtitle--intro,
-.section__subtitle--about {
+.section__subtitle--about,
+.section__article--intro {
     background: var(--clr-accent);
     padding: 0.25em 1em;
     font-family: var(--ff-secondary);
@@ -313,11 +314,19 @@ header {
     position: relative;
 }
 
+.intro__article {
+    position: relative;
+}
+
 .intro__img {
     box-shadow: var(--bs);
 }
 
 .section__subtitle--intro {
+    display: inline-block;
+}
+
+.section__article--intro {
     display: inline-block;
 }
 
@@ -333,6 +342,17 @@ header {
         grid-template-columns: min-content max-content;
     }
 
+    .intro__article {
+        display: grid;
+        width: min-content;
+        margin: 0 auto;
+        grid-column-gap: 1em;
+        grid-template-areas:
+            "title"
+            "article";
+        grid-template-columns: max-content max-content;
+    }
+
     .intro__img {
         grid-area: img;
         min-width: 250px;
@@ -345,6 +365,16 @@ header {
         grid-column: -1 / 1;
         grid-row: 2;
         text-align: right;
+        position: relative;
+        left: -1.5em;
+        width: calc(100% + 1.5em);
+    }
+
+    .section__article--intro {
+        align-self: start;
+        grid-column: -1 / 1;
+        grid-row: 2;
+        text-align: center;
         position: relative;
         left: -1.5em;
         width: calc(100% + 1.5em);
@@ -935,6 +965,43 @@ header {
     }
 }
 
+.portfolio-item-links-add {
+    padding: 2em 2em 1em;
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.additional-link-1 {
+    padding: 0 0 2em;
+}
+
+.additional-link-2 {
+    padding: 0 0 2em;
+}
+
+@media (min-width: 760px) {
+    .portfolio-item-links-add {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
+        grid-template-areas: "additionalLink1 additionalLink2 additionalLink3";
+    }
+
+    .additional-link-1 {
+        padding: 0;
+        grid-area: additionalLink1;
+    }
+
+    .additional-link-2 {
+        grid-area: additionalLink2;
+    }
+
+    .additional-link-3 {
+        grid-area: additionalLink3;
+    }
+}
+
 /* Individual Portfolio Other Projects */
 
 .other-projects {
@@ -955,4 +1022,97 @@ header {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Article Item */
+
+.article {
+    background: var(--clr-light);
+    color: var(--clr-dark);
+}
+
+.article-item-details {
+    padding: 0em 2em 3em;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.article-item-details p {
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.article-item-details h3 {
+    padding: 1.5em 0em 0em;
+}
+
+.article-image-block {
+    overflow-x: scroll;
+    overflow: auto;
+    margin-bottom: 2em;
+}
+
+.article-image-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em 0em 0em;
+    max-width: 1300px;
+    overflow: hidden;
+}
+
+@media (max-width: 1000px) {
+    .article-image-center {
+        height: 400px;
+        object-fit: contain;
+        overflow: hidden;
+    }
+}
+
+.article-video-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2em 0em 1em;
+    max-width: 1300px;
+    overflow: hidden;
+}
+
+@media (max-width: 1000px) {
+    .article-video-center {
+        height: 400px;
+        object-fit: contain;
+        overflow: hidden;
+    }
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: var(--clr-dark);
+    color: var(--clr-light);
+    text-align: center;
+    padding: 2px;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    width: 200px;
+    bottom: 120%;
+    left: 50%;
+    margin-left: -100px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }

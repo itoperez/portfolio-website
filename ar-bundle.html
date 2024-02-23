@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AR Bundle</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+            integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc="
+            crossorgin="anonymous"
+        />
+
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
+        +Pro:300,900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/5fa45d2fa2.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <!--
+            <div class="logo">
+                <img src="img/dev-logo.png" alt="">
+            </div>
+            -->
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="index.html#services" class="nav__link">My Services</a></li>
+                    <li class="nav__item"><a href="index.html#about" class="nav__link">About Me</a></li>
+                    <li class="nav__item"><a href="index.html#work" class="nav__link">My Work</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Introduction -->
+        <section class="intro">
+            <h1 class="section__title section__title--intro">Projects in <strong>AR Bundle</strong></h1>
+            <p class="section__subtitle section__subtitle--intro">Using Unity AR</p>
+            <img src="img/ar-bundle/ar-bundle-main.png" alt="" class="intro__img" />
+        </section>
+
+        <!--Summary-->
+        <!--<section class="summary">-->
+        <div class="portfolio-item-summary">
+            <p>
+                This is a collection of projects in Unity AR. The first project uses Image Tracking to find the N64 cartridge and projects Link
+                and Zelda onto it with a little bit of shader fun and a transition script. In the next video I used Surface Tracking to place a
+                music box that plays Edelweiss when placed on a flat surface (it will face you when placed and has 3D audio). The last project in
+                the third video is Unity's own tutorial on Face Tracking. I mostly stuck to their project and learned how to create a face
+                tracking mask app on Android.
+            </p>
+        </div>
+        <!--</section>-->
+
+        <!-- Gallery -->
+        <section class="gallery">
+            <!--left scroll button-->
+            <div>
+                <button class="btnScroll" onclick="scrollL()"><i class="fa-solid fa-angle-left"></i></button>
+            </div>
+
+            <div class="slider">
+                <div class="slides">
+                    <!--radio buttons-->
+                    <input type="radio" name="radio-btn" id="radio1" />
+                    <input type="radio" name="radio-btn" id="radio2" />
+                    <input type="radio" name="radio-btn" id="radio3" />
+
+                    <!--slide images-->
+                    <div class="slide first">
+                        <video controls loop controls autoplay muted="">
+                            <source src="img/ar-bundle/ar-bundle-vid1.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                    <div class="slide">
+                        <video controls loop controls autoplay muted="">
+                            <source src="img/ar-bundle/ar-bundle-vid2.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                    <div class="slide">
+                        <video controls loop controls autoplay muted="">
+                            <source src="img/ar-bundle/ar-bundle-vid3.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+
+                    <!--automatic navigation-->
+                    <div class="navigation-auto">
+                        <div class="auto-btn1"></div>
+                        <div class="auto-btn2"></div>
+                        <div class="auto-btn3"></div>
+                    </div>
+                </div>
+                <!--manual navigation-->
+                <div class="navigation-manual">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                </div>
+            </div>
+
+            <!--right scroll button-->
+            <div>
+                <button class="btnScroll" onclick="scrollR()"><i class="fa-solid fa-angle-right"></i></button>
+            </div>
+
+            <script type="text/javascript">
+                var counter = 1;
+                document.getElementById("radio" + counter).checked = true;
+                /*
+                counter = 2;
+                setInterval(function(){               
+                    document.getElementById('radio' + counter).checked = true;
+                    counter++;
+                    if(counter > 3) {
+                        counter = 1;
+                    }
+                        
+                }, 10000);
+                */
+                function scrollL() {
+                    //alert("Counter: " + counter);
+                    if (counter > 1) {
+                        counter--;
+                        document.getElementById("radio" + counter).checked = true;
+                    } else {
+                        counter = 3;
+                        document.getElementById("radio" + counter).checked = true;
+                    }
+                }
+                function scrollR() {
+                    //alert("Counter: " + counter);
+                    if (counter < 3) {
+                        counter++;
+                        document.getElementById("radio" + counter).checked = true;
+                    } else {
+                        counter = 1;
+                        document.getElementById("radio" + counter).checked = true;
+                    }
+                }
+            </script>
+        </section>
+
+        <!--Info-->
+        <section class="info">
+            <!--Details -->
+            <div class="portfolio-item-details">
+                <!--
+                <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
+                -->
+                <p>
+                    The first Link and Zelda was kept on PC and used a webcam to find the image. The image tracking was done with Vuforia which
+                    is now a bit outdated but I learn a lot regardless. The next two projects used AR Core and were built on Android. Below will
+                    have three links to the three project repositories.
+                </p>
+            </div>
+
+            <!--Links-->
+            <div class="portfolio-item-links-add">
+                <div class="additional-link-1">
+                    <a href="https://github.com/itoperez/image-tracking" target="_blank" class="btn">Image Repo</a>
+                </div>
+                <div class="additional-link-2">
+                    <a href="https://github.com/itoperez/surface-tracking" target="_blank" class="btn">Surface Repo</a>
+                </div>
+                <div class="additional-link-3">
+                    <a href="https://github.com/itoperez/face-tracking" target="_blank" class="btn">Face Repo</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="mailto:itoperez83@gmail.com" class="footer__link">itoperez83@gmail.com</a>
+            <ul class="social-list">
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://www.linkedin.com/in/ito-perez-7a060013a/">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://youtube.com/@itoperez8226/videos">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://github.com/itoperez">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://play.unity.com/u/itoperez83">
+                        <i class="fa-brands fa-unity"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://www.hackerrank.com/itoperez83">
+                        <i class="fa-brands fa-hackerrank"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+
+        <script src="js/index.js"></script>
+    </body>
+</html>
