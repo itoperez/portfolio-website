@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ineractions in Unity VR (Shortened)</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+            integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc="
+            crossorgin="anonymous"
+        />
+
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
+        +Pro:300,900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/5fa45d2fa2.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <!--
+            <div class="logo">
+                <img src="img/dev-logo.png" alt="">
+            </div>
+            -->
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="index.html#work" class="nav__link">My Work</a></li>
+                    <li class="nav__item"><a href="index.html#blogs" class="nav__link">Blogs</a></li>
+                    <li class="nav__item"><a href="index.html#services" class="nav__link">My Services</a></li>
+                    <li class="nav__item"><a href="index.html#about" class="nav__link">About Me</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Introduction -->
+        <section class="intro__article">
+            <h1 class="section__title section__title--intro">Ineractions in Unity VR (Shortened)</h1>
+            <p class="section__subtitle section__article--intro">June 5th 2023 - [Beginner]</p>
+            <!--<img src="img/build-stack.png" alt="" class="intro__img" /> -->
+        </section>
+
+        <!--Article-->
+        <section class="article-item-details">
+            <!--Article Intro -->
+            <h3>
+                <b>NOT ACTUALLY SHORTENED YET BUT COMING SOON!</b>
+            </h3>
+            <p>
+                When working in Unity VR you’ll be met with a decision on how you want your hands to interact with your VR world. We’re going to
+                start with what most users will have, hand controllers. To start, your hand controllers will need to be set up with an Interactor
+                Component. Next the objects you want to interact with will need to have an Interactable Component.
+            </p>
+            <p>
+                For a step by step guide on how to set up a Unity project for VR check out:
+                <a href="article-setting-up-unity-vr.html">Setting Up VR in Unity</a> .
+            </p>
+            <h3>Index</h3>
+            <p>
+                &nbsp;&nbsp;1 - <a href="#section1">Installing the XR Interaction Toolkit Package</a><br />
+                &nbsp;&nbsp;2 - <a href="#section2">Updating from XRRig to XROrigin</a><br />
+                &nbsp;&nbsp;3 - <a href="#section3">XR Interactor/Interactable Components Overview</a><br />
+                &nbsp;&nbsp;4 - <a href="#section4">XR Grab Interactabe on ‘Grabbable Object’</a><br />
+                &nbsp;&nbsp;5 - <a href="#section5">XR Direct Interactor on the ‘RightController’</a><br />
+                &nbsp;&nbsp;6 - <a href="#section6">XR Ray Interactor on the ‘LeftController’</a><br />
+                &nbsp;&nbsp;7 - <a href="#section7">Adding an ‘Input Action Manager’</a><br />
+                &nbsp;&nbsp;8 - <a href="#section8">Final Working Interactions</a><br />
+                &nbsp;&nbsp;9 - <a href="#section9">Exporting a Package</a><br />
+                10 - <a href="#section10">Attach Transforms</a><br />
+                11 - <a href="#section11">Other Interactable Components</a><br />
+            </p>
+
+            <!--Article Section 1-->
+            <h3 id="section1">1 - Installing the XR Interaction Toolkit Package</h3>
+            <p>
+                We’ll need to add a new Unity package to have access to the Interactor and Interactable script components. Open the Package
+                Manager by going to the top left Window > Package Manager.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img1.1-Window_PackageManager.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                A new Package Manager window will open, filter packages you are searching for by selecting ‘Unity Registry’ in the
+                <i>Packages: ‘...’</i> dropdown box. Now in the top right search bar, search for ‘XR Interaction Toolkit’ and install. For this
+                tutorial it looks like we are going to be using Version 2.0.4 and we can see that this package was made by Unity Technologies so
+                we know it is safe and supported.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img1.2-PackageManager_Dropdown.png" alt="" class="article-image-center" />
+            </div>
+            <div class="article-image-block">
+                <img
+                    src="img/article-interactions-in-unity-vr/a-iiuvr-img1.3-PackageManager_InterTool.png"
+                    alt=""
+                    class="article-image-center"
+                />
+            </div>
+            <p>
+                The package will now take a couple seconds to download and be stored in the Project window under the Packages folder. If you ever
+                need to remove a package, follow the same process as above to find it (now it can be found in <i>Packages: In Project</i> and in
+                <i>Packages: Unity Registry</i>) and click the ‘Remove’ button where before it used to be an ‘Install’ button.
+            </p>
+            <p>
+                Open your package manager again and search for ‘XR Interaction Toolkit’ the package we just downloaded. You’ll notice that now we
+                have the option of Importing two additional Samples for this package. Import only the first named ‘Starter Assets’.
+            </p>
+            <div class="article-image-block">
+                <img
+                    src="img/article-interactions-in-unity-vr/a-iiuvr-img1.4-PackageManager_StarterAssets.png"
+                    alt=""
+                    class="article-image-center"
+                />
+            </div>
+            <p>
+                You should now have a new ‘Samples’ folder in your Assets folder in your Project Window. We’re going to be using the ‘XRI Default
+                Input Actions’ found in the ‘Samples > XR Interaction Toolkit > 2.0.4 > Starter Assets’ folder to set up our controllers for
+                interactions in the following sections.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img1.5-StarterAssetsLocation.png" alt="" class="article-image-center" />
+            </div>
+
+            <!--Article Section 2-->
+            <h3 id="section2">2 - Updating from XRRig to XROrigin</h3>
+            <p>
+                The XRRig is the older version and to avoid potential deprecation warnings or random bugs we are going to instead use XROrigin.
+                Locate the XRRig game object in the Hierarchy Window and click on it to open it in the Inspector Window. We’ll only need to edit
+                this base parent object and not its three children game objects (Camera Offset, RightController, and LeftController). Remove the
+                ‘Camera Offset’ component by clicking on the three dots and selecting ‘Remove Component’. Select the ‘Add Component’ button and
+                search for and add an ‘XR Origin’ component (notice that this newer version has a camera offset built in). Rename the game object
+                from ‘XRRig’ to ‘XROrigin’.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img2.1-XROriginUpdate.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                We’ll need to fill in some missing slots in the ‘XR Origin’ component. Click and drag the ‘Camera Offset’ game object (a child of
+                ‘XROrigin’ in the Hierarchy Window) into the ‘Camera Floor Offset Object’ slot. Click and drag the ‘Main Camera’ game object (a
+                child of ‘Camera Offset’ that has a Camera component on it) into the ‘Camera GameObject’ slot.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img2.2-XROriginSlots.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                <i
+                    ><u>Quick Tip 1</u> - Editor Windows: If you ever accidentally close a window (Hierarchy, Inspector, Scene View, etc) you can
+                    always re-open them by going to Window > General and clicking on the Window you want. In the future you’ll find these other
+                    two useful Windows under Window > Rendering and Window > Animation for when you’re ready to get more artistic with your
+                    projects.
+                </i>
+            </p>
+            <p>Great! You’re now ready to start adding Interactor and Interactable components to your project.</p>
+
+            <!--Article Section 3-->
+            <h3 id="section3">3 - XR Interactor/Interactable Components Overview</h3>
+            <p>
+                Interactable game objects are what we want our player/user to be able to interact with in the virtual world. We’ll start with a
+                simple intractable red ball named ‘Grabbable Object’ which will have an
+                <a href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/xr-grab-interactable.html" target="_blank"
+                    >XR Grab Interactable</a
+                >
+                component that allows it to be grabbed by our two hand controllers when they are set up as XR Interactors. In the following
+                sections we will also learn about
+                <a href="https://docs.unity3d.com/510/Documentation/Manual/PrimitiveObjects.html" target="_blank">Primitive Objects</a>, creating
+                <a href="https://docs.unity3d.com/Manual/Materials.html" target="_blank">Materials</a>, a little about
+                <a href="https://docs.unity3d.com/Manual/CollidersOverview.html" target="_blank">Colliders</a>,
+                <a href="https://docs.unity3d.com/Manual/class-Rigidbody.html" target="_blank">Rigidbody Components</a>, and the
+                <a href="https://docs.unity3d.com/Manual/GizmosMenu.html" target="_blank">Gizmos Menu</a>.
+            </p>
+            <p>
+                Unity allows you to add only one of two types of Interactor components to each of your hand controllers meaning you can mix and
+                match between hands. These Interactors are the
+                <a href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/xr-direct-interactor.html" target="_blank"
+                    >XR Direct Interactor</a
+                >
+                and
+                <a href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/xr-ray-interactor.html" target="_blank"
+                    >XR Ray Interactor</a
+                >
+                (reminder that they can only interact with game objects that have an intactactable component). Direct Interactors require that
+                you come into direct contact with what you want to interact with. Ray Interactors use a laser pointer called a Ray that will need
+                to intersect with the interactable object before you are able to interact with it.
+            </p>
+            <p>
+                We are going to add an XR Direct Interactor to our ‘RightController’ and an XR Ray Interactor to our ‘LeftController’. Both the
+                ‘RightController’ and ‘LeftController’ are children game objects that can be found under the parent game object ‘XRRig’.
+            </p>
+            <p>
+                If this seems confusing to you, don’t worry, we’ll be going over it in detail step by step. For now here’s a sneak peak at the
+                finished product: both XR Interactors (hand controllers) working with an XR Grab Interactable (red ball).
+            </p>
+            <h2><b>RECORD VIDEO - Both XR Interactors working with XR Grab Interactable</b></h2>
+
+            <!--Article Section 4-->
+            <h3 id="section4">4 - XR Grab Interactabe on ‘Grabbable Object’</h3>
+            <p>
+                Now that we set up our hand controller with interactors we’ll need to add an
+                <a href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/xr-grab-interactable.html" target="_blank"
+                    >XR Grab Interactable</a
+                >
+                to any game object we want to grab. We’ll start with a simple ball. Right click in the Hierarchy Window and select 3D Object >
+                Sphere to add a sphere. This is one of Unity’s six
+                <a href="https://docs.unity3d.com/510/Documentation/Manual/PrimitiveObjects.html" target="_blank">Primitive Objects</a>.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img4.1-Sphere.png" alt="" class="article-image-center" />
+            </div>
+            <p id="createMaterialFolder">
+                Right click in the Project Window inside the Assets folder and create a new folder named ‘Materials’. In Unity you can use
+                <a href="https://docs.unity3d.com/Manual/Materials.html" target="_blank">Materials</a> to change the appearance of game objects.
+                Right click inside the new Materials folder to and create a new material, Create > Material. Rename the new material (I named it
+                “Ball”) and choose a color by clicking on the box to the right of Albedo.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img4.2-MaterialsFolder.png" alt="" class="article-image-center" />
+            </div>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img4.3-AddMaterial.png" alt="" class="article-image-center" />
+            </div>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img4.4-PickColor.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                To apply the Material click and drag it (“Ball”) directly onto the Grabbable Ball sphere in the Scene View or onto the Grabbable
+                Ball game object in the Hierarchy Window or into the Inspector Window if the Grabbable Ball is selected. Change the Position and
+                Scale of the ball in the Transform Component so that now when you press the Play button you can have the ball directly in front
+                of you (Position: 0, 1, 0.5 works well for me).
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img4.5-BallTransform.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                <i
+                    ><u>Quick Tip 2</u> - Gizmos: You’ll notice in the Scene View we have two big sun and camera icons. These are for the
+                    Directional Light and Main Camera game objects and are called gizmos. You can toggle these on and off by clicking on the
+                    <a href="https://docs.unity3d.com/Manual/GizmosMenu.html" target="_blank">Gizmos Menu</a> but I like to just resize them
+                    smaller by adjusting the 3D Icons slider so they don’t get in the way as much.</i
+                >
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img4.6-Gizmos.png" alt="" class="article-image-center" />
+            </div>
+            <p>Add an ‘XR Grab Interactable’ component to the ‘Grabbable Ball’ game object in the Inspector.</p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img4.7-XRInteractableToBall.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                Notice that adding an ‘XR Grab Interactable’ automatically adds a
+                <a href="https://docs.unity3d.com/Manual/class-Rigidbody.html" target="_blank">Rigidbody Component</a> as well. This adds physics
+                to the game object. As is, the ‘Grabbable Ball’ is all set and ready to be interacted with. Because we haven’t set up a way for
+                our player to move their VR body in game, I recommend we limit the physics on the ‘Grabbable Ball’ to prevent it from falling and
+                rolling away.
+            </p>
+            <p>
+                In the Rigidbody component, uncheck the ‘Use Gravity’ checkbox and check ‘Is Kinematic’ instead (you can also change ‘<a
+                    href="https://docs.unity3d.com/ScriptReference/Rigidbody-isKinematic.html"
+                    target="_blank"
+                    >isKinematic</a
+                >’ in script). When ‘isKinematic’ is enabled, physics will no longer apply on this Rigidbody. In the ‘XR Grab Interactable’
+                uncheck ‘Throw On Detach’ to disable the script from trying to throw the ‘Grabbale Ball’ you release it. This prevents warnings
+                in the Console Window as ‘XR Grab Interactable’ can’t throw an object that no longer has gravity.
+            </p>
+            <div class="article-image-block">
+                <img
+                    src="img/article-interactions-in-unity-vr/a-iiuvr-img4.8-IsKinematicThrowOnDetach.png"
+                    alt=""
+                    class="article-image-center"
+                />
+            </div>
+
+            <!--Article Section 5-->
+            <h3 id="section5">5 - XR Direct Interactor on the ‘RightController’</h3>
+            <p>
+                Add an
+                <a href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/xr-direct-interactor.html" target="_blank"
+                    >XR Direct Interactor</a
+                >
+                component to the ‘RightController’ game object.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img5.1-RightDirectInteractor.png" alt="" class="article-image-center" />
+            </div>
+            <p id="fixWarning">
+                To fix the warning (yellow triangle) in the XR Direct Interactor component we’ll also need to add an
+                <a
+                    href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/xr-controller-action-based.html#:~:text=Interprets%20feature%20values%20on%20a,the%20transform%20of%20the%20GameObject."
+                    target="_blank"
+                    >‘XR Controller (Action Based)’</a
+                >
+                component. We’ll be using Action Based instead of Device Based on this project so that if we ever want to export it, people with
+                multiple types of VR headsets can use it unlike Device Based where we would have to keybind to a specific device.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img5.2-XRControllerAB.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                In the XR Controller (Action-based) component we need to add References to all the actions (buttons, analog sticks, triggers)
+                that we are going to want to use on our controllers. We’re going to be using the ‘XRI Default Input Actions’ we downloaded above
+                from the ‘XR Interaction Toolkit’ package. For this tutorial we only really need to have a Reference to the Select Action to be
+                able to use the grip button on our controllers to grab things. Feel free to add references to all the other actions you think
+                you’ll want to use as well.
+            </p>
+            <p>
+                Click on the Use Reference check box to enable it and then the target icon to the right of the Reference box to open the ‘Select
+                InputActionReference’ Window. In the search box type ‘Select’ and choose ‘XRI RightHand Interaction/Select’. Below is a picture
+                of all the correct References if you would like to add the rest of the Actions.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img5.3-SelectActionReference.png" alt="" class="article-image-center" />
+            </div>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img5.4-FilledOutReferences.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                <i
+                    >Quick Tip 3 - Input Actions: Explore the ‘XRI Default Input Actions’ found in ‘Samples > XR Interaction Toolkit > 2.0.4 >
+                    Starter Assets’. Double clicking the map and lightning icon opens up this window. For more information on creating your own
+                    Action Maps with Actions read this documentation on
+                    <a href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/ActionAssets.html" target="_blank"
+                        >Input Action Assets</a
+                    >
+                    by Unity.
+                </i>
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img5.5-QTInputActions.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                Direct Interactors also need a collider to be able to detect other objects that also have colliders. With an overlap of colliders
+                and checking if the other object is interactable (all done by the XR Direct Interactor) we’ll be able to interact with the
+                interactable object. We’ll be using a sphere collider but you could also use a box collider if you want it to better fit the
+                shape of your hand controller. Add a Sphere Collider component to the ‘RightController’ and set its Radius to 0.25, a reasonable
+                area to interact with.
+            </p>
+            <div class="article-image-block">
+                <img
+                    src="img/article-interactions-in-unity-vr/a-iiuvr-img5.6-SphereColliderForController.png"
+                    alt=""
+                    class="article-image-center"
+                />
+            </div>
+            <p>
+                <i
+                    >Quick Tip 4 - Colliders: When adding colliders to game objects try to stick with primitive shapes and if your object is
+                    complex in shape feel free to use multiple colliders. However, try to limit yourself to as few colliders as possible. Many
+                    colliders can end up costing too much computing power and often fewer clunkier ones work just as well.</i
+                >
+            </p>
+            <p>
+                With that our ‘RightController’ is all set up to be used as an XR Direct Interactor. Next we’ll set up the ‘LeftController’ to be
+                used as an XR Ray Interactor.
+            </p>
+
+            <!--Article Section 6-->
+            <h3 id="section6">6 - XR Ray Interactor on the ‘LeftController’</h3>
+            <p>Add an XR Ray Interactor component to the ‘LeftController’ game object.</p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img6.1-LeftRayInteractor.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                We’ll fix the same warning we had in the XR Direct Interactor above (<a href="#fixWarning">section 5 - fix warning</a>) in the XR
+                Ray Interactor component by adding an ‘XR Controller (Action Based)’ component. Just like before, we’ll add References to all the
+                Actions in the ‘XR Controller (Action Based)’ component if you’d like or just to the ‘Select Action’ as that is all we will need
+                for this tutorial.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img6.2-ReferencesRay.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                For XR Ray Interactors you won’t need a collider as the ray is what is used to detect interactable objects. As is right now,
+                grabbing with a ray works but we don’t have a visual to see where the ray is pointing. Add a
+                <a
+                    href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/xr-interactor-line-visual.html"
+                    target="_blank"
+                    >‘XR Interactor Line Visual’</a
+                >
+                component and notice that Unity automatically adds a
+                <a href="https://docs.unity3d.com/Manual/class-LineRenderer.html" target="_blank">‘Line Renderer’</a>.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img6.3-LineVisual.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                <i
+                    >Quick Tip 5 - Pink Materials: In the Scene View you’ll notice a pink plane coming out of the ‘LeftController’. This is
+                    because we are missing the material needed by the Line Renderer. We’ll fix that in a moment. If you ever encounter Pink
+                    Materials again in the future know that it is Unity telling you that there is an issue with your material. It could be that
+                    you are missing a material, missing a texture, have an incompatible shader for your material, or are using materials that are
+                    not compatible with your current Render Pipeline.</i
+                >
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img6.4-PinkMaterials.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                We need to add a material that the Line Renderer will reference and use to draw the line (ray) visual. Right click in your Assets
+                > Materials folder in the Project Window (created above in
+                <a href="#createMaterialFolder">section 4 - create material folder</a>) and Create > Material named ‘Default-Line’.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img6.5-LineMaterial.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                Click on the material to open it in the inspector. At the top you’ll notice that this material is currently using the Shader:
+                Standard. We’re going to change the shader, click the dropdown box and (at the bottom of the list) navigate to Legacy Shaders >
+                Particles > Alpha Blended Premultiply. Now instead of having a solid line visual, like we did with a Standard shader, we have a
+                semi transparent line visual using Alpha Blended Premultiply. The reason for using a semi transparent visual is that it's better
+                on the eyes for depth perception, in my opinion anyways.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img6.6-DefaultLineShader.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                Click and drag the newly created ‘Default-Line’ material onto the ‘LeftController’ game object open in the inspector. Notice we
+                no longer have the Pink Material error.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img6.7-AppliedDefaultLine.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                Feel free to play around with the settings in the ‘XR Interactor Line Visual’ to change how you want your line (ray) to look in
+                width, length, and color when interacting with valid or invalid interactables.
+            </p>
+            <p>We’re all set up and ready to use the ‘LeftController’ as an XR Ray Interactor.</p>
+
+            <!--Article Section 7-->
+            <h3 id="section7">7 - Adding an ‘Input Action Manager’</h3>
+            <p>
+                The last step to making everything work is adding an
+                <a
+                    href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/input-action-manager.html#:~:text=This%20component%20automatically%20enables%20or,of%20assets%20of%20type%20InputActionAsset%20.&text=The%20InputActionAsset%20s%20this%20component,OnEnable%20and%20OnDisable%20from%20MonoBehaviour%20."
+                    target="_blank"
+                    >‘Input Action Manager’</a
+                >
+                component to enable reading all the input action references we set up above. You can create a separate empty game object just for
+                this or I like to add it to the XROrigin game object.
+            </p>
+            <p>
+                Add an ‘Input Action Manager’ component to the XROrigin game object press the plus button under the Action Asset dropdown to add
+                a new slot for an Action Asset. Click the target button to the right of the new slot and select the ‘XRI Default Input Actions’
+                InputActionAsset from the pop up window.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img7.1-InputActionManager.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                If you press play at this point everything will work but you’ll notice that our controllers rotation and position is a little
+                off. For some reason adding an ‘Input Action Manager’ makes things a little weird but we can easily fix this by navigating to the
+                blue lettered ‘XRControllerRight’ and ‘XRControllerLeft’
+                <a href="https://docs.unity3d.com/Manual/Prefabs.html" target="_blank">Prefab</a> model game objects.
+            </p>
+            <p>
+                Select ‘XRControllerRight’ and hold down control on the keyboard to multi-select ‘XRControllerLeft’ as well. Now we can edit both
+                of these in the Inspector at the same time. Reset Position Z and Rotation X to zero. Luckily this also fixes the origin point of
+                the ‘LeftController’ Ray Visual and now it comes out of the front trigger area of the controller instead of the top of the
+                controller.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img7.2-ControllerBefore.png" alt="" class="article-image-center" />
+            </div>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img7.3-ControllerAfter.png" alt="" class="article-image-center" />
+            </div>
+
+            <!--Article Section 8-->
+            <h3 id="section8">8 - Final Working Interactions</h3>
+            <p>
+                We’re finally done and ready to test out both hand Interactors with the ball Interactable object. To grab objects with the Direct
+                Interactor hand make sure the collider on the hand controller and the collider on the ball interactable object overlap. To grab
+                objects with the Ray Interactor point the ray so that it intersects the collider on the ball interactable object.
+            </p>
+            <h2><b>RECORD VIDEO - Both XR Interactors working with XR Grab Interactable</b></h2>
+
+            <!--Article Section 9-->
+            <h3 id="section9">9 - Exporting a Package</h3>
+            <p>
+                Now that we have two different hand Interactors and a ball Interactable I highly recommend you export this current project. For
+                future projects you’ll be able to import this basic setup and not have to go through all of these steps again.
+            </p>
+            <p>
+                To export a Unity package that can later be imported into new Unity projects select Assets > Export Package… from the Menu bar.
+                In the pop up window you’ll want to make sure everything is selected and on the bottom left make sure the ‘Include dependencies’
+                box is selected. Press the ‘Export…’ button, name your package, and choose an appropriate location to save your base starter VR
+                Unity package.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img9.1-ExportPackage.png" alt="" class="article-image-center" />
+            </div>
+            <div class="article-image-block">
+                <img src="img/article-interactions-in-unity-vr/a-iiuvr-img9.2-ExportingPackage.png" alt="" class="article-image-center" />
+            </div>
+
+            <!--Article Section 10-->
+            <h3 id="section10">10 - Attach Transforms</h3>
+            <p>
+                You'll notice that in both the Interactor and Interactable components there is an empty slot for an Attach Transform that takes a
+                GameObject (Transform). If left empty, by default the Interactor and Interactable scripts will use the Transform of the game
+                object they are attached to.
+            </p>
+            <p>
+                When a grab interaction occurs, direct or ray, these two Attach Transforms work together like a magnet and a piece of metal. The
+                magnet is the Attach Transform on the Interactor and the piece of metal is the Attach Transform on the Interactable. The magnet
+                is activated when you squeeze the grab button on your controller. That Interactable Object will then snap to connect with the
+                Interactor object.
+            </p>
+            <h2><b>RECORD VIDEO - GIF of Ball with Grab Interactable and Direct Interactor</b></h2>
+            <p>
+                Notice how the orientation of the XYZ on the Interactable Object’s Attach Transform will snap to and match the orientation of the
+                Interactor Object’s Attach Transform. This works well in the simple interaction above because it was left without an Attach
+                Transform so it defaults to the transform location which is located at the center of the ball. However, sometimes the default
+                transform location (the center of the lightsaber below) isn’t where we would like to grab.
+            </p>
+            <h2><b>RECORD VIDEO - GIF Lightsaber snapping to wrong spot</b></h2>
+            <p>
+                In this case, create an empty Game Object named Attach Transform and make it a child of the Interactable Objects snap location
+                you want to alter. Change its position and rotation (of the magnet) and drag and drop it into the Attach Transform slot.
+            </p>
+            <h2><b>RECORD VIDEO - GIF Lightsaber snapping fixed</b></h2>
+            <p>
+                <i
+                    >Note: You can also add an Attach Transform to the Interactor Object if the default orientation isn’t where you think
+                    Interactable Objects should snap too. It’s usually fine, and unless it’s a really weird orientation, I’d leave it alone.
+                    However if you do decide to change it <u>do it first</u> and then I advise you to individually change the Attach Transform on
+                    the multiple Interactable Objects you are going to be using in your scene.</i
+                >
+            </p>
+
+            <!--Article Section 11-->
+            <h3 id="section11">11 - Other Interactable Components</h3>
+            <p>
+                Unity includes an
+                <a href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/xr-grab-interactable.html" target="_blank"
+                    >XR Grab Interactable</a
+                >
+                as explained above (<a href="#section4">section 4 - XR Grab Interactable on 'Grabbable Object'</a>), but there is also a
+                <a
+                    href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/xr-simple-interactable.html"
+                    target="_blank"
+                    >XR Simple Interactable</a
+                >
+                and a
+                <a
+                    href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.1/manual/xr-tint-interactable-visual.html"
+                    target="_blank"
+                    >XR Tint Interactable Visual</a
+                >. Both are fairly simple and less complicated than the XR Grab Interactable. However, from these three base interactables we can
+                inherit and modify their classes to create more complex interactable interactions.
+            </p>
+            <p>
+                From an XR Grab Intractable class we can create an XR Offset Grab Interactable that can be used with an XR Direct Interactor.
+                This grab interactable doesn’t snap to the Attach Transform’s position and rotation but instead keeps its current position and
+                rotation and pivots around where you grab.
+            </p>
+            <h2><b>RECORD VIDEO - GIF Offset Grab Ball</b></h2>
+            <h2><b>RECORD VIDEO - GIF Offset Grab Camera</b></h2>
+            <p>
+                From and XR Grab Interactable working together with an XR Simple Intractable we can create an XR Two Hand Grab Interactable that
+                will allow you to hold an object with two hands.
+            </p>
+            <h2><b>RECORD VIDEO - GIF Two Hand Grab Gun</b></h2>
+            <h2><b>RECORD VIDEO - GIF Two Hand Grab Paddle</b></h2>
+
+            <!--Article Links-->
+            <div class="portfolio-item-links">
+                <div class="tooltip">
+                    <span class="tooltiptext">Interactions in Unity VR</span>
+                    <div class="play-link">
+                        <a href="article-interactions-in-unity-vr.html" class="btn">Last Blog</a>
+                    </div>
+                </div>
+
+                <div class="tooltip">
+                    <span class="tooltiptext">Teleporting Through a Portal</span>
+                    <div class="repo-link">
+                        <a href="article-teleporting-through-a-portal.html" class="btn">Next Blog</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="mailto:itoperez83@gmail.com" class="footer__link">itoperez83@gmail.com</a>
+            <ul class="social-list">
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://www.linkedin.com/in/ito-perez-7a060013a/">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://youtube.com/@itoperez8226/videos">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://github.com/itoperez">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://play.unity.com/u/itoperez83">
+                        <i class="fa-brands fa-unity"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" target="_blank" href="https://www.hackerrank.com/itoperez83">
+                        <i class="fa-brands fa-hackerrank"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+
+        <script src="js/index.js"></script>
+    </body>
+</html>
