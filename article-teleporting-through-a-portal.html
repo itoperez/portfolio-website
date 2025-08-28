@@ -47,30 +47,342 @@
         <!-- Introduction -->
         <section class="intro__article">
             <h1 class="section__title section__title--intro">Teleporting Through a Portal</h1>
-            <p class="section__subtitle section__article--intro">June 5th 2023 - [Beginner]</p>
+            <p class="section__subtitle section__article--intro">December 8, 2024 - [Advanced-Beginner]</p>
             <!--<img src="img/build-stack.png" alt="" class="intro__img" /> -->
         </section>
 
         <!--Article-->
         <section class="article-item-details">
-            <!--Details -->
+            <!--Article Intro -->
             <p>
                 <i
-                    >This tutorial is in reference to how teleportation works in my VR Game <a href="nyu-capstone.html">NYU Capstone Project</a>.
-                    In that game world you are given a polaroid camera that you can use to take pictures. Those pictures activate the several
-                    large polaroid portals located around the level. Flying through the portals teleports you back to where the picture was
-                    taken. The portals will track your movement in order to face you for what I believe to be a more magical feeling
-                    interaction.</i
+                    >This tutorial is in reference to how teleportation works in my VR Game -
+                    <a href="nyu-capstone.html">NYU Capstone Project</a>. In that game you are given a polaroid camera that you can use to take
+                    pictures. Those pictures activate the several large polaroid portals located around the level. Flying through the portals
+                    teleports you back to where the picture was taken.
+                </i>
+            </p>
+            <p>
+                Although these portals were made for Unity VR, they can easily be used in 3D and 2D with little to no tweaking. They work with
+                colliders meaning that all you have to do to activate them is walk through them (aka collide with them). The static portals will
+                stay in place while the dynamic portals will track your movement in order to face you for a more seamless interaction.
+            </p>
+            <p>
+                Shown below is the <b>static portal</b> and <b>dynamic portal</b> we are going to be making followed by a look at a
+                <b>fully incorporated version</b> from my <a href="nyu-capstone.html">NYU Capstone Project</a>.
+            </p>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-teleporting-through-a-portal/a-ttap-vid0.1-StaticPortal.mp4" type="video/mp4" />
+            </video>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-teleporting-through-a-portal/a-ttap-vid0.2-DynamicPortal.mp4" type="video/mp4" />
+            </video>
+            <video id="nyuPortal" controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-teleporting-through-a-portal/a-ttap-vid0.3-NYUPortal.mp4" type="video/mp4" />
+            </video>
+            <h3>Index</h3>
+            <p>
+                &nbsp;&nbsp;1 - <a href="#section1">Adding Locomotion, Continuous Movement and Snap Turns</a><br />
+                &nbsp;&nbsp;2 - <a href="#section2">Setting Up the Portal GameObject</a><br />
+                &nbsp;&nbsp;3 - <a href="#section3">Setting Up TPTrigger GameObject</a><br />
+                &nbsp;&nbsp;4 - <a href="#section4">PortalManager Script</a><br />
+                &nbsp;&nbsp;5 - <a href="#section5">Ideas and Improvements</a><br />
+            </p>
+
+            <!--Article Section 1-->
+            <h3 id="section1">1 - Adding Locomotion, Continuous Movement and Snap Turns</h3>
+            <p>
+                This builds off of the base of the <a href="article-setting-up-unity-vr.html">Setting Up Unity VR</a> tutorial (I also kept the
+                Interactor Hands in the downloadable package from the
+                <a href="article-interactions-in-unity-vr.html">Interactions in Unity VR</a> tutorial just in case you’d like to use them). Skip
+                this section if you’d like to go straight into building the portal.
+            </p>
+            <p>
+                Left click in the Hierarchy, navigate to and add an XR >
+                <a href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/locomotion.html" target="_blank"
+                    >Locomotion System (Action Based)</a
+                >. In the Locomotion System component of the just added Locomotion System GameObject make sure to reference the XROrigin.
+            </p>
+            <p>
+                In the
+                <a
+                    href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/snap-turn-provider-action-based.html"
+                    target="_blank"
+                    >Snap Turn Provider (Action-based)</a
+                >
+                component use and add a reference to the Right Hand’s Snap Turn Action [ XRI RightHand Locomotion/Turn (Input Action Reference) ]
+                in order to snap your VR body left/right with the right joystick by the predetermined Turn Amount (default is 45 degrees).
+            </p>
+            <p>
+                Add a
+                <a
+                    href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/continuous-move-provider-action-based.html"
+                    target="_blank"
+                    >Continuous Move Provider (Action-based)</a
+                >
+                component to the Locomotion System Game Object and reference the Locomotion System GameObject as the System used. Also use and
+                add a reference to the Left Hand’s Move Action [ <i>XRI LeftHand Locomotion/Move (Input Action Reference)</i> ] in order to move
+                your VR body with the left joystick.
+            </p>
+            <p>The Locomotion System GameObject with everything added should look like this:</p>
+            <div class="article-image-block">
+                <img src="img/article-teleporting-through-a-portal/a-ttap-img1.1-LocomotionSystem.png" alt="" class="article-image-center" />
+            </div>
+
+            <!--Article Section 2-->
+            <h3 id="section2">2 - Setting Up the Portal GameObject</h3>
+            <p>
+                Create or add a portal object, I’ll be using a flatten cube named ‘portal’ with a green material. The portal object will need a
+                collider with its ‘Is Trigger’ box checked and a Rigidbody with its ‘Is Kinematic’ checked (so it stays anchored in place
+                unaffected by external forces and so we can move in script). Create a new script named “PortalManager” saved in the Scripts
+                folder and add it as a component to your portal. Whenever the player hits the collider on the portal it will trigger the
+                teleporting which will be done through script.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-teleporting-through-a-portal/a-ttap-img2.1-PortalGameObject.png" alt="" class="article-image-center" />
+            </div>
+            <p id="teleportToLocation">
+                Additionally create an empty object and name it “Teleport To Location”. We’ll be using later in the script as a reference to
+                where the portal should teleport you to. I set mine on top of the blue quad with the blue forward vector facing the red quad so
+                that the player faces that after teleporting.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-teleporting-through-a-portal/a-ttap-img2.2-TeleportToLocation.png" alt="" class="article-image-center" />
+            </div>
+
+            <!--Article Section 3-->
+            <h3 id="section3">3 - Setting Up TPTrigger GameObject</h3>
+            <p>
+                We now need to set up the trigger that will collide with the portal box collider trigger. Being teleported when your head goes
+                through the portal made the most sense to me so we’ll make the trigger area around the Main Camera.
+            </p>
+            <p>
+                Left click on the Main Camera in the XROrigin and Create Empty object named ‘TPTrigger’. Add a Sphere Collider component and
+                resize it to roughly the size you think a head would be. Make sure the collider’s ‘Is Trigger’ box is checked.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-teleporting-through-a-portal/a-ttap-img3.1-TPTrigger.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                As is our Portal will be triggered by any object that has a collider with ‘Is Trigger’ checked. ‘TPTrigger’, both hand
+                controllers, and the balls from earlier tutorials all meet this requirement. To ensure that only objects we want to teleport do
+                teleport, we’re going to add a second requirement in the form of a
+                <a href="https://docs.unity3d.com/Manual/Tags.html" target="_blank">Tag</a>.
+            </p>
+            <p>
+                Create a new Tag by clicking the ‘Tag’ dropdown box, then ‘Add Tag…'. Click the + button under ‘Tags’ to add a new one, name it
+                “Teleportable”, and click Save. Under the original ‘Tag’ dropdown box select the newly created “Teleportable” Tag.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-teleporting-through-a-portal/a-ttap-img3.2-AddTag.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                Now any object with a collider set to ‘Is Trigger’ and with the ‘Teleportable’ tag will be able to teleport through the Portal.
+            </p>
+
+            <!--Article Section 4-->
+            <h3 id="section4">4 - PortalManager Script</h3>
+            <p>
+                This section will start by building a basic <a href="#staticPortal">static portal</a> and then, if it fits your game, will add
+                more code to make it a <a href="#dynamicPortal">dynamic portal</a> like the one I use in my VR Game -
+                <a href="#nyuPortal">seen above</a>.
+            </p>
+            <!--Static Portal-->
+            <h3 id="staticPortal">Static Portal</h3>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-teleporting-through-a-portal/a-ttap-vid0.1-StaticPortal.mp4" type="video/mp4" />
+            </video>
+            <p>
+                Open up the PortalManger script we added to the Portal GameObject, delete Start() we won’t be using, and add the following
+                variable. It’s set to private so that no other script can edit it and is tagged with [SerializeFeild] to allow us to set it from
+                inside the Editor.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-teleporting-through-a-portal/a-ttap-img4.1-VariableStaticPortal.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                <i
+                    >Quick Tip 1 - [Tooltip(“...”)]: Tooltips aren’t necessary but are nice to have. When we hover over a variable in the Editor
+                    we can now see what the variable is going to be used for like a hint or a note.
+                </i>
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-teleporting-through-a-portal/a-ttap-img4.2-Tooltip.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                Add a
+                <a href="https://docs.unity3d.com/ScriptReference/Collider.OnTriggerEnter.html" target="_blank"
+                    >OnTriggerEnter(Collider other)</a
+                >
+                function, this will be called any time a GameObject that has a collider with ‘Is Trigger’ collides with the collider of the
+                GameObject this Script is attached to. That of course being the Portal GameObject’s box collider (also set to ‘Is Trigger’).
+            </p>
+            <p>
+                All the colliders that collide with the Portal are temporarily saved as ‘other’ and you can access the GameObjects those ‘other’
+                colliders are attached to. Check if the ‘other’ collider’s GameObject has a ‘Teleportable’ tag and if it does teleport that
+                ‘other’ GameObject’s root transform to the ‘teleportToLocation’.
+            </p>
+            <p>
+                We use <a href="https://docs.unity3d.com/ScriptReference/Transform-root.html" target="_blank">Transform.root</a> because without
+                it ‘other’ is just referencing the transform of the GameObject with the collider, in our case ‘TPTrigger’. We don’t want the
+                transform of ‘TPTrigger’ but instead the transform of ‘XROrigin’ to be able to teleport it along with all its children. Root will
+                return the topmost transform in the hierarchy.
+            </p>
+            <div class="article-image-block">
+                <img
+                    src="img/article-teleporting-through-a-portal/a-ttap-img4.3-StaticPortalCodeComplete.png"
+                    alt=""
+                    class="article-image-center"
+                />
+            </div>
+            <p>
+                Save the script and back in the Editor click and drag the Teleport To Location object we
+                <a href="#teleportToLocation">created above</a>. Now the script can reference its Transform and teleport the ‘Teleportable’ to
+                the correct spot.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-teleporting-through-a-portal/a-ttap-img4.4-FinalTTLAdd.png" alt="" class="article-image-center" />
+            </div>
+            <p>With that our simple Static Portal is done. Save everything and try it out for yourself.</p>
+            <!--Dynamic Portal-->
+            <h3 id="dynamicPortal">Dynamic Portal</h3>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-teleporting-through-a-portal/a-ttap-vid0.2-DynamicPortal.mp4" type="video/mp4" />
+            </video>
+            <p>
+                This dynamic portal moves to look at you but stands still if you are close enough to allow you to interact with it. Skip this
+                next paragraph to go straight into building but if you’re interested here’s the reasoning behind this design choice:
+            </p>
+            <p>
+                <i
+                    >In my game, portals are scattered around the level not necessarily in the sky but high enough that the player has to be in
+                    ghost/flying mode to reach them. Flying is a fun mechanic but it's sort of difficult to maneuver because of the speed (what
+                    makes it fun). My main reason for portals to look at the player was to better help them aim and hit the portal. It also
+                    mostly solved a secondary issue where they shouldn’t access the back side of the portal (more below). A final happy accident
+                    is that it made the portals look more magical, as if they were alive.
+                </i>
+            </p>
+            <p>
+                To make the portal move to look at the player we’ll need two additional variables. The first will be to keep track of the object
+                the portal should look at, in this case the ‘Player’s Head’. We’ll also need a ‘Look at Minimum Distance’ variable so that if the
+                player gets close enough to the portal it will stop moving. This allows the player to interact with it by removing any jittery
+                twitchiness you’d get from the portal snapping to look at you when you’re super close and slightly moving your head.
+            </p>
+            <div class="article-image-block">
+                <img
+                    src="img/article-teleporting-through-a-portal/a-ttap-img4.5-DynamicPortalVariables.png"
+                    alt=""
+                    class="article-image-center"
+                />
+            </div>
+            <p>
+                Create a new private void function named ‘PortalMovements()’ below OnTriggerEnter() that we’ll eventually call in Update(). In
+                the function check to see if the
+                <a href="https://docs.unity3d.com/ScriptReference/Vector3.Distance.html" target="_blank">Vector3.Distance()</a> between the
+                transform.position (transform of the object this script is attached to aka the Portal) and the playerHead is greater than the
+                lookAtMinDistance. If it is then use
+                <a href="https://docs.unity3d.com/ScriptReference/Transform.LookAt.html" target="_blank">Transform.LookAt()</a> to make the
+                portal look at the playerHead.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-teleporting-through-a-portal/a-ttap-img4.6-PortalMovements.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                Save the script and back in the Editor click and drag the Main Camera into the Player Head slot we created in script so that we
+                now have a reference to its Transform. Feel free to play around with the Look at Min Distance, 2.0f worked good for me. Save,
+                run, and play. It should look a bit like this.
+            </p>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-teleporting-through-a-portal/a-ttap-vid4.1-MovingPortal.mp4" type="video/mp4" />
+            </video>
+            <p>
+                Our portal now works better but there is a minor issue, you can still teleport if you approach the portal from the back side
+                while inside the minimum distance. This is because the colliders can still overlap thus registering a collision.
+            </p>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-teleporting-through-a-portal/a-ttap-vid4.2-TeleportBackBug.mp4" type="video/mp4" />
+            </video>
+            <p>
+                <i
+                    >There are a couple fixes, the first and easiest would be to add a thicker backing to the portal so that an object will be
+                    stopped by it and not hit the portal’s collider. This may be the solution for you, I couldn’t use this because my portals are
+                    thin polaroids. A second solution, that I used for a while, was to check if the player was in front of the portal and if they
+                    weren’t then I would snap the portal to face them. I didn’t like this as much because I know players are immensely curious
+                    and would hate not being able to see the back side of the portal. My current solution is instead to check if the object to be
+                    teleported is in front of the portal at the point of collision, that of course being OnTriggerEnter(), and then add that as a
+                    condition to determine whether or not to teleport the object.</i
                 >
             </p>
-            <h2><b>GIF of what we’re going to be making</b></h2>
-
-            <h3>Setting Up Portal GameObject</h3>
             <p>
-                Create a new script component named “PortalManager” and attach it to every object you want to be a portal. These portal objects
-                should include a collider with its ‘Is Trigger’ box checked and a Rigidbody with its ‘Is Kinematic’ checked.
+                In the OnTriggerEnter() create two new Vector3 variables. The first, ‘portalForward’, will get the forward vector of the
+                transform this script is attached to using
+                <a href="https://docs.unity3d.com/ScriptReference/Transform.TransformDirection.html" target="_blank"
+                    >Transform.TransformDirection()</a
+                >. That is, it will get the blue forward vector of the portal seen below.
             </p>
-            <h2><b>GIF of Adding Components</b></h2>
+            <div class="article-image-block">
+                <img src="img/article-teleporting-through-a-portal/a-ttap-img4.7-BlueForwardVector.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                The second vector, ‘portalToOther’, can be calculated by subtracting the position of the ‘transform’ (portal) from the ‘other’
+                (usually ‘<a href="#section3">TPTrigger</a>’ from above with the ‘Teleportable’ tag) collider. This vector’s direction points out
+                from the portal to the other collider.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-teleporting-through-a-portal/a-ttap-img4.8-VectorVariables.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                Create a new bool variable named ‘inFrontOfPortal’ and set it equal to the result of the conditional statement below. Use the
+                result of boolean ‘inFrontOfPortal’ as a second condition in the if statement that determines whether or not to teleport the
+                ‘other’ object .
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-teleporting-through-a-portal/a-ttap-img4.9-DotProduct.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                What we're doing here is finding the dot product (<a
+                    href="https://docs.unity3d.com/ScriptReference/Vector3.Dot.html"
+                    target="_blank"
+                    >Vector3.Dot</a
+                >) between the vectors ‘portalForward’ and ‘portalToOther’, in that order. The dot product will return a positive number,
+                negative number, or zero. We can use the sign on the number to determine whether the end position of the second vector is in
+                front, behind, or perpendicular to the front side of the perpendicular plane to the first vector (the perpendicular plane to the
+                ‘portalForward’ vector is the same plane the the portal is on). A positive number is returned when the two vectors are less than
+                90 degrees apart (in front of the portal), a negative number when they are greater than 90 degrees apart (behind the portal), and
+                zero if the vectors are exactly 90 degrees apart (perpendicular to the portal). Here is a
+                <a href="https://www.falstad.com/dotproduct/" target="_blank">dot product visualization</a> that I hope helps (the red vector is
+                ‘portalForward’ and the blue is ‘portalToOther’).
+            </p>
+            <p>
+                That’ll do it for preventing teleportation from the back side of the portal while allowing it from the front. Save your script
+                and run your project. Test it by approaching from both sides. It should be working like this:
+            </p>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-teleporting-through-a-portal/a-ttap-vid4.3-TeleportBackFixed.mp4" type="video/mp4" />
+            </video>
+
+            <!--Article Section 5-->
+            <h3 id="section5">5 - Ideas and Improvements</h3>
+            <p>
+                <b>[1]</b> Linking up to portals. Easy enough just add a second portal. Issue here would be preventing the second portal you
+                teleport to from immediately teleporting you back. A disabling timer might work but then there would be a portal cooldown
+                preventing other objects from teleporting at the same time. Slightly better solution would be to add a script to all teleportable
+                objects and after teleporting they are disabled from teleporting for a bit and can only teleport again after a OnTriggerExit()
+                from the second portal. Or minecraft it and just use a countdown at the second portal before taking you back.
+            </p>
+            <p>
+                <b>[2]</b> Portal respects the location of where an object collides into the first portal and it spits out the object from the
+                same location on the second portal. My idea would be to get the location of the collision in world space and translate it to a 2D
+                Vector in local space with respect to the portal. Assuming the second portal is the same size (if not use multiple to rescale to
+                correct size), use the 2D Vector with respect to that second portal in local space and then translate that position to a 3D
+                Vector in worldspace and split out the object. That's sort of how I create ripples in the portal along with a shader to show the
+                ripples. Exceptions include objects that need to stay grounded (XROrigin). They’ll have to ignore the Y height component and
+                continue to be teleported to the ground in front of the portal.
+            </p>
+
+            <!--
+            <h2><b>--------------------------------------</b></h2>
+            <h2><b>--------------------------------------</b></h2>
             <p>Make sure to resize the collider to fix the portal area you want to use to trigger the teleporting.</p>
             <h2><b>GIF of Resizing</b></h2>
 
@@ -193,20 +505,21 @@
                 We do this to continue to prevent unwanted collisions with the rest of the level.
             </p>
             <h2><b>Pic of Controller Section</b></h2>
+            -->
 
             <!--Links-->
             <div class="portfolio-item-links">
                 <div class="tooltip">
-                    <span class="tooltiptext">Interactions in Unity VR (Shortened)</span>
+                    <span class="tooltiptext">Offset Grab in VR</span>
                     <div class="play-link">
-                        <a href="article-interactions-in-unity-vr-shortened.html" class="btn">Last Blog</a>
+                        <a href="article-offset-grab-in-vr.html" class="btn">Last Blog</a>
                     </div>
                 </div>
 
                 <div class="tooltip">
-                    <span class="tooltiptext">Offset Grab in VR</span>
+                    <span class="tooltiptext">None, this is the last one.</span>
                     <div class="repo-link">
-                        <a href="article-offset-grab-in-vr.html" class="btn">Next Blog</a>
+                        <a href="article-teleporting-through-a-portal.html" class="btn">Next Blog</a>
                     </div>
                 </div>
             </div>

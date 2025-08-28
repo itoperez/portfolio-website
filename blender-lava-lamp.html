@@ -55,10 +55,10 @@
         <!--<section class="summary">-->
         <div class="portfolio-item-summary">
             <p>
-                I wanted to solidify some of what I learned making the donut so I went ahead and made this lava lamp. This was more
-                straightforward to model using a reference picture. Artistically it maybe wasn't not as hard as the donut or as I imagine other
-                organic things would be but it still had its own challenges. One of those challenges was figuring how to keep the lava in bounds
-                of the glass and not floating away. Really enjoyed this project as well and I look forward to doing more.
+                I wanted to solidify some of what I learned making the blender donut so I decided on making this lava lamp. I used a reference
+                picture to first model the basic shape which was mostly straight forward. I did have a difficult time figuring out how to keep
+                the lava in the bounds of the glass, some collisions would phase through. Overall it was an enjoyable project and I am excited to
+                keep exploring Blender in the future.
             </p>
         </div>
         <!--</section>-->
@@ -157,15 +157,18 @@
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
                 <p>
-                    I started with a circle because that makes sense and extruded out the basic hollow shape. Then the middle section was
-                    separated and made thicker into glass and the remaining upper and lower sections were made metalic. The lava was made using
-                    metaballs along with a lot of trial and error to get the correct size and viscosity. Metaballs have a weight and since there
-                    is no other liquid in this lamp to sell the effect of heating up the lava or plasma to make it rise I used wind. This
-                    included two wind turbines with one below the metaballs (heating area) being stronger than one above (where the lava would
-                    cool and start falling slowly). To further sell the illusion two turbulent areas were added. The metaball's origin point was
-                    then used to collide with invisible wireframe bounds to keep the lava from clipping outside the glass. The whole setup can be
-                    seen in slide two. I used the same ideas from the donut tutorial to set up lighting, rendering, and make the final video.
-                    Composition can be seen in slide three.
+                    I started with a cylinder and extruded out a hollow shape. A middle section was then cut out and made thicker for the glass.
+                    The remaining upper and lower sections are turned metallic. Lava is made using metaballs with lots of trial and error to get
+                    the correct size and viscosity. Metaballs have mass so in order to keep them afloat I used wind on top and below the glass
+                    area. Real lava lamps work by heating up the “lava” causing it to rise and letting it cool at the top causing it to fall
+                    gently. For this effect I added two wind turbines. The first is below in the heating area with a strong force to make the
+                    lava rise and keep it afloat. The second is above the glass in the cooling area with a lesser force to push it back down.
+                </p>
+                <p>
+                    To further sell the illusion and randomize movement, two turbulent areas were added. The metaball's origin points were used
+                    as collision points with an invisible wireframe to keep the lava from clipping outside the glass. The whole setup can be seen
+                    on slide two. I used the same ideas from the donut tutorial to set up lighting, rendering, and make the final video. The
+                    entire composition can be seen on slide three.
                 </p>
             </div>
 

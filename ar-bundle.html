@@ -55,11 +55,15 @@
         <!--<section class="summary">-->
         <div class="portfolio-item-summary">
             <p>
-                This is a collection of projects in Unity AR. The first project uses Image Tracking to find the N64 cartridge and projects Link
-                and Zelda onto it with a little bit of shader fun and a transition script. In the next video I used Surface Tracking to place a
-                music box that plays Edelweiss when placed on a flat surface (it will face you when placed and has 3D audio). The last project in
-                the third video is Unity's own tutorial on Face Tracking. I mostly stuck to their project and learned how to create a face
-                tracking mask app on Android.
+                This is my collection of the Augmented Reality projects I made with Unity. Each video demonstrates a different type of tracking
+                method used to anchor virtual objects onto real world surfaces. In order the videos show examples of: image tracking, surface
+                tracking, and face tracking.
+            </p>
+            <p>
+                For the project in the first video I took a picture of the game cartridge and cropped out just the label. I then fed that image
+                to Vuforia in order to create a usable anchor point. Unity, with the help of a webcam, then searches for the image anchor and
+                when it finds it will project whatever you want onto it. In this case I used Link and Zelda with a custom shader to alternate
+                them fading in and out.
             </p>
         </div>
         <!--</section>-->
@@ -160,9 +164,14 @@
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
                 <p>
-                    The first Link and Zelda was kept on PC and used a webcam to find the image. The image tracking was done with Vuforia which
-                    is now a bit outdated but I learn a lot regardless. The next two projects used AR Core and were built on Android. Below will
-                    have three links to the three project repositories.
+                    The second video uses surface tracking with the help of Unity’s AR Core package. It first searches for flat surfaces and then
+                    you can decide where to place the object. I went with a music box that plays Edelweiss when placed. This project was built to
+                    run on phones.
+                </p>
+                <p>
+                    The third video shows how I again use Unity’s AR Core for face tracking. The package does a really good job tracking most
+                    faces on its own, I just had to learn how to configure it all. I then made a simple app to place prefabs on my face and
+                    switch between them.
                 </p>
             </div>
 

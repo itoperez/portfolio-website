@@ -47,7 +47,7 @@
         <!-- Introduction -->
         <section class="intro__article">
             <h1 class="section__title section__title--intro">Ineractions in Unity VR</h1>
-            <p class="section__subtitle section__article--intro">June 5th 2023 - [Complete Beginner]</p>
+            <p class="section__subtitle section__article--intro">September 20, 2023 - [Beginner]</p>
             <!--<img src="img/build-stack.png" alt="" class="intro__img" /> -->
         </section>
 
@@ -197,7 +197,9 @@
                 If this seems confusing to you, don’t worry, we’ll be going over it in detail step by step. For now here’s a sneak peak at the
                 finished product: both XR Interactors (hand controllers) working with an XR Grab Interactable (red ball).
             </p>
-            <h2><b>RECORD VIDEO - Both XR Interactors working with XR Grab Interactable</b></h2>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-interactions-in-unity-vr/a-iiuvr-vid03.1_08.1-bothXRGrabs.mp4" type="video/mp4" />
+            </video>
 
             <!--Article Section 4-->
             <h3 id="section4">4 - XR Grab Interactabe on ‘Grabbable Object’</h3>
@@ -477,7 +479,9 @@
                 Interactor hand make sure the collider on the hand controller and the collider on the ball interactable object overlap. To grab
                 objects with the Ray Interactor point the ray so that it intersects the collider on the ball interactable object.
             </p>
-            <h2><b>RECORD VIDEO - Both XR Interactors working with XR Grab Interactable</b></h2>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-interactions-in-unity-vr/a-iiuvr-vid03.1_08.1-bothXRGrabs.mp4" type="video/mp4" />
+            </video>
 
             <!--Article Section 9-->
             <h3 id="section9">9 - Exporting a Package</h3>
@@ -511,19 +515,25 @@
                 is activated when you squeeze the grab button on your controller. That Interactable Object will then snap to connect with the
                 Interactor object.
             </p>
-            <h2><b>RECORD VIDEO - GIF of Ball with Grab Interactable and Direct Interactor</b></h2>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-interactions-in-unity-vr/a-iiuvr-vid10.1-directGrabSnap.mp4" type="video/mp4" />
+            </video>
             <p>
                 Notice how the orientation of the XYZ on the Interactable Object’s Attach Transform will snap to and match the orientation of the
-                Interactor Object’s Attach Transform. This works well in the simple interaction above because it was left without an Attach
-                Transform so it defaults to the transform location which is located at the center of the ball. However, sometimes the default
-                transform location (the center of the lightsaber below) isn’t where we would like to grab.
+                Interactor Object’s Attach Transform. This works well in the simple interaction above. When left empty without an Attach
+                Transform it will use the transform location which is located at the center of the ball. However, sometimes the default transform
+                location (the center of the lightsaber below) isn’t where we would like to grab.
             </p>
-            <h2><b>RECORD VIDEO - GIF Lightsaber snapping to wrong spot</b></h2>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-interactions-in-unity-vr/a-iiuvr-vid10.2-lightsaberSnapWrong.mp4" type="video/mp4" />
+            </video>
             <p>
-                In this case, create an empty Game Object named Attach Transform and make it a child of the Interactable Objects snap location
+                In this case, create an empty Game Object named Attach Transform and make it a child of the Interactable Object's snap location
                 you want to alter. Change its position and rotation (of the magnet) and drag and drop it into the Attach Transform slot.
             </p>
-            <h2><b>RECORD VIDEO - GIF Lightsaber snapping fixed</b></h2>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-interactions-in-unity-vr/a-iiuvr-vid10.3-lightsaberSnapFixed.mp4" type="video/mp4" />
+            </video>
             <p>
                 <i
                     >Note: You can also add an Attach Transform to the Interactor Object if the default orientation isn’t where you think
@@ -555,18 +565,27 @@
                 inherit and modify their classes to create more complex interactable interactions.
             </p>
             <p>
-                From an XR Grab Intractable class we can create an XR Offset Grab Interactable that can be used with an XR Direct Interactor.
-                This grab interactable doesn’t snap to the Attach Transform’s position and rotation but instead keeps its current position and
-                rotation and pivots around where you grab.
+                From an XR Grab Intractable class we can create an <b>XR Offset Grab Interactable</b> that can be used with an XR Direct
+                Interactor. This grab interactable doesn’t snap to the Attach Transform’s position and rotation but instead keeps its current
+                position and rotation and pivots around where you grab.
             </p>
-            <h2><b>RECORD VIDEO - GIF Offset Grab Ball</b></h2>
-            <h2><b>RECORD VIDEO - GIF Offset Grab Camera</b></h2>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-interactions-in-unity-vr/a-iiuvr-vid11.1-offsetGrabCube.mp4" type="video/mp4" />
+            </video>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-interactions-in-unity-vr/a-iiuvr-vid11.2-offsetGrabCamera.mp4" type="video/mp4" />
+            </video>
             <p>
-                From and XR Grab Interactable working together with an XR Simple Intractable we can create an XR Two Hand Grab Interactable that
-                will allow you to hold an object with two hands.
+                From and XR Grab Interactable working together with an XR Simple Intractable we can create an
+                <b>XR Two Hand Grab Interactable</b> that will allow you to hold an object with two hands. The first hand to grab the object will
+                work as an anchor which the second hand can compliment to change the pitch and yaw (roll is controlled only by the first hand).
             </p>
-            <h2><b>RECORD VIDEO - GIF Two Hand Grab Gun</b></h2>
-            <h2><b>RECORD VIDEO - GIF Two Hand Grab Paddle</b></h2>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-interactions-in-unity-vr/a-iiuvr-vid11.3-twoHandGrabGun.mp4" type="video/mp4" />
+            </video>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-interactions-in-unity-vr/a-iiuvr-vid11.4-twoHandGrabPaddle.mp4" type="video/mp4" />
+            </video>
 
             <!--Article Links-->
             <div class="portfolio-item-links">
@@ -578,9 +597,9 @@
                 </div>
 
                 <div class="tooltip">
-                    <span class="tooltiptext">Interactions in Unity VR (Shortened)</span>
+                    <span class="tooltiptext">Offset Grab in VR</span>
                     <div class="repo-link">
-                        <a href="article-interactions-in-unity-vr-shortened.html" class="btn">Next Blog</a>
+                        <a href="article-offset-grab-in-vr.html" class="btn">Next Blog</a>
                     </div>
                 </div>
             </div>

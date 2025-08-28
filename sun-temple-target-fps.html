@@ -55,9 +55,10 @@
         <!--<section class="summary">-->
         <div class="portfolio-item-summary">
             <p>
-                Sun Temple is a fun target mini game where you have to find and shoot down all the targets before your time runs out. Play as
-                many times as you like with the option to restart if you lose. Explore the temple and practice trick shots as the projectiles can
-                bounce and hit multiple targets.
+                Sun Temple is a target shooting mini game where the goal is to find and shoot all the targets before your time runs out. Explore
+                the temple and practice trick shots with projectiles that can bounce and hit multiple targets at a time. A simple UI allows you
+                to restart once you run out of time or after you win. This is the first game I made using blueprints in Unreal in order to learn
+                the basics.
             </p>
         </div>
         <!--</section>-->
@@ -154,23 +155,19 @@
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
                 <p>
-                    This game uses the default FPS character that includes movement and gun/projectiles so my focus was making targets to
-                    interact with a given projectile, UI (HUD and end screen), win condition, and adding a level area. Since there were going to
-                    be multiple targets I created a target Blueprint class, seen in slide two, that I later used to place said targets around the
-                    level. Before a target is hit it is static and after a single collision from the projectile its physics is turned on and a
-                    torque is added to it to make it spin and make the falling target more cinematic. After detecting a single hit it was
-                    necessary to disable multiple subsequent hits so that the UI score is updated only once per target. Again a single projectile
-                    can bounce and hit multiple targets.
+                    I used a default FPS character from Unreal that includes movement and gun/projectiles already done. My focus instead was to:
+                    make targets that interact with a projectile, add UI (HUD and end screen), add a win condition, and create a level. Slide two
+                    shows the target Blueprint class that handles scoring and target reactions to being hit. Before a target is hit it is static
+                    and after a projectile collision its physics is turned on and a torque is added to it to make it spin while falling. After
+                    detecting a single hit it was necessary to disable multiple subsequent hits so that the UI score is updated only once per
+                    target.
                 </p>
                 <p>
-                    The UI needed for the HUD is a score and a timer. The timer is counts down and if it reaches zero the player loses. The score
-                    is updated when a target hit. When level designing, adding additional targets to automatically change the denominator of the
-                    score to accurately reflect the number of target hits needed to win. An end screen window pop up if the player runs out time
-                    or wins with different respective messages and the option to restart to play again. To make it all pretty I used a the
-                    included level asset Sun Temple from Unreal Engine. Up to this point everything mentioned was was done in Unreal Engine 4 so
-                    to explore Unreal Engine 5 I imported the whole UE4 project into a UE5 project and changed the entire lighting system to use
-                    Lumen which is Unreal's new fully dynamic global illumination and reflections system. The complete game logic can be seen in
-                    the game manager Blueprint in slide three.
+                    The HUD includes the score and a timer. An end screen window will pop up if the player runs out time or wins with different
+                    respective messages and the option to play again. Up to this point everything mentioned was was done in Unreal Engine 4 so to
+                    explore Unreal Engine 5 I imported the whole UE4 project into a UE5 project and changed the entire lighting system to use
+                    Lumen which is Unreal's new (at the time) fully dynamic global illumination and reflections system. The complete game logic
+                    can be seen in the game manager Blueprint in slide three.
                 </p>
             </div>
 

@@ -47,32 +47,235 @@
         <!-- Introduction -->
         <section class="intro__article">
             <h1 class="section__title section__title--intro">Offset Grab in VR</h1>
-            <p class="section__subtitle section__article--intro">June 5th 2023 - [Advanced-Beginner]</p>
+            <p class="section__subtitle section__article--intro">March 15, 2024 - [Advanced-Beginner]</p>
             <!--<img src="img/build-stack.png" alt="" class="intro__img" /> -->
         </section>
 
         <!--Article-->
         <section class="article-item-details">
             <!--Details -->
-            <h3>Completely written and mostly editted</h3>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-offset-grab-in-vr/a-ogivr-vid1-offsetGrabCube.mp4" type="video/mp4" />
+            </video>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-offset-grab-in-vr/a-ogivr-vid2-offsetGrabCamera.mp4" type="video/mp4" />
+            </video>
+
+            <!--Article Intro -->
             <p>
-                Here's a <a href="img/article-offset-grab-in-vr/offset-grab-pdf.pdf">Offset Grab PDF</a> of what I have so far. Will add on here
-                soon.
+                To achieve an offset grab we will be inheriting from the
+                <a href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/xr-grab-interactable.html" target="_blank"
+                    >XR Grab Interactable</a
+                >
+                and modifying it just a bit. Skip ahead to <a href="#section2">XR Offset Grab Interactable</a> for the main tutorial. The code
+                below comes straight from Valem’s
+                <a href="https://www.youtube.com/watch?v=FMu7hKUX3Oo&t=839s" target="_blank"
+                    >Introduction to VR in Unity - PART 5 : GRAB INTERACTION</a
+                >
+                tutorial but this one is slightly updated to work for Unity version’s 2022.1 and above as some of the code from this video is now
+                deprecated in the newer versions of Unity. For another great and even simpler tutorial check out Andrew’s
+                <a href="https://www.youtube.com/watch?v=XRaNYOXU0hw" target="_blank">Simple Offset Interactable for XR Toolkit (Update)</a>.
+                Andrew’s version has the pro of being simple but a con of not working with socket interactors, the video goes into details.
             </p>
+
+            <!--Article Section 1-->
+            <h3 id="section1">Background Context Needed to Better Understand Tutorial</h3>
+            <p>
+                Jump over to this other blog on the types of
+                <a href="article-interactions-in-unity-vr.html" target="_blank">Interactions in Unity VR</a> to better understand how the XR Grab
+                Interactable class works and what Attach Transforms are. Those are the two main things we’ll be modifying so when you’re clear on
+                that come back here for the rest of the Offset Grab tutorial.
+            </p>
+            <p>
+                This tutorial builds off of what was set up in the previous
+                <a href="article-interactions-in-unity-vr.html" target="_blank">Interactions in Unity VR</a>. If you haven’t gone through it,
+                it's ok, just make sure your project has an XROrgin with at least one controller set up with a Direct Interactor.
+            </p>
+
+            <!--Article Section 2-->
+            <h3 id="section2">XR Offset Grab Interactable</h3>
+            <p>
+                Create a Scripts folder inside your Assets folder in the Project window. In your scripts folder create and open a new script
+                named ‘XROffsetGrabInteractable’ (To create a new script, right click in the Scripts folder and navigate to Create > C# Script).
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-offset-grab-in-vr/a-ogivr-img2.1.png" alt="" class="article-image-center" />
+            </div>
+            <div class="article-image-block">
+                <img src="img/article-offset-grab-in-vr/a-ogivr-img2.2.png" alt="" class="article-image-center" />
+            </div>
+
+            <!--Article Section 3-->
+            <h3 id="section3">Namespaces, Inheritance, and Variables</h3>
+            <p>
+                We need to import the namespace
+                <a href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.4/manual/index.html" target="_blank"
+                    >‘UnityEngine.XR.Interaction.Toolkit‘</a
+                >. You can think of a
+                <a href="https://docs.unity3d.com/Manual/Namespaces.html" target="_blank">namespace</a>
+                as a collection of classes. The specific class we want to use from this namespace is ‘XRGrabInteractable’ which is a script that
+                you’ll recall we attached to the red ball in the previous tutorial. Like mentioned above we’re going to modify this script/class,
+                but first we need to <a href="https://learn.unity.com/tutorial/inheritance#" target="_blank">inherit</a> from it before we have
+                access to its functions.
+            </p>
+            <p>
+                Import namespaces by adding ‘using UnityEngine.XR.Interaction.Toolkit;‘ to <b>line 4</b> and inherit from ‘XRGrabInteractable’ by
+                changing ‘MonoBehaviour’ in <b>line 6</b> to ‘XRGrabInteractable’. Remember to constantly save changes so that they can apply in
+                the Unity Editor.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-offset-grab-in-vr/a-ogivr-img3.1.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                We’ll need to store the initial Attach Transform local position and local rotation in two private variables (<b>line 8</b> and
+                <b>line 9</b>). Go ahead and also delete the Update() function and any comments as we’ll be adding our own.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-offset-grab-in-vr/a-ogivr-img3.2.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                <i>
+                    The trick we’re going to do to create the illusion of an Offset Grab is that we will quickly change the Attach Transform
+                    position and rotation (of the offset grab object) to wherever our Direct Interactor hand controller’s Attach Transform is the
+                    second that hand controller begins to grab (Select Entered in Unity terms) the object. It’ll be broken down further below but
+                    for now we’ll need to check if we have an Attach Transform we can manipulate.
+                </i>
+            </p>
+
+            <!--Article Section 4-->
+            <h3 id="section4">Start()</h3>
+            <div class="article-image-block">
+                <img src="img/article-offset-grab-in-vr/a-ogivr-img4.1.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                In the Start() function check to see if we have an ‘attachTransform’ (<b>line 13</b>). Notice this variable is undefined in our
+                script but there are no errors, that’s because this variable is inherited from ‘XRGrabInteractable’ and defined there. This
+                ‘attachTransform’ variable references the same Attach Transform slot that can later be filled via the Editor in this same
+                ‘XROffsetGrabInteractable’ script component once it has been finished and added to an object. Here’s a preview of the complete
+                script component with an empty Attach Transform slot.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-offset-grab-in-vr/a-ogivr-img4.2.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                In case that slot stays empty, we’ll need to create and name a GameObject to be our attachTransform (<b>line 15</b>). Then to
+                keep things tidy we’ll make the new grab attachTransform GameObject a child of this transform by using the
+                <a href="https://docs.unity3d.com/ScriptReference/Transform.SetParent.html" target="_blank">SetParent()</a> function (<b
+                    >line 16</b
+                >) (this transform is whatever GameObject this script component is attached to). Finally set the attachTransform equal to the
+                newly created grab GameObject (<b>line 17</b>).
+            </p>
+            <p>
+                Now that we’ve taken care of that case we can automatically set initialAttachLocalPosition and initialAttachLocalRotation (<b
+                    >line 20</b
+                >
+                and <b>line 21</b>) to the newly created attachTransform or, if the slot is not left empty, the code will skip over lines 14-18
+                and use the attachTransform the game designer sets in the Editor.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-offset-grab-in-vr/a-ogivr-img4.3.png" alt="" class="article-image-center" />
+            </div>
+
+            <!--Article Section 5-->
+            <h3 id="section5">OnSelectEntered()</h3>
+            <p>
+                Now that we have an attach transform with saved initial position and rotations we can move the attach transform to perform the
+                illusion. We’ll need to slightly change the base OnSelectEntered() function inherited from ‘XRGrabInteractable’ by
+                <a href="https://learn.unity.com/tutorial/overriding#" target="_blank">overriding</a> it. (Here’s a list of all the overridable
+                <a href="https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/interactable-events.html" target="_blank"
+                    >interactable events</a
+                >
+                you can modify in script). Make sure to use ‘OnSelectEntering(SelectEnterEventArgs args)’ not ‘OnSelectEntering(XRBaseInteractor
+                interactor)’ as that one is now deprecated.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-offset-grab-in-vr/a-ogivr-img5.1.png" alt="" class="article-image-center" />
+            </div>
+            <div class="article-image-block">
+                <img src="img/article-offset-grab-in-vr/a-ogivr-img5.2.png" alt="" class="article-image-center" />
+            </div>
+            <p>The function will come with a ‘base.OnSelectEntering(args);’ as well seen below (<b>line 26</b>).</p>
+            <div class="article-image-block">
+                <img src="img/article-offset-grab-in-vr/a-ogivr-img5.3.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                This args parameter gives us access to important information like what interactor is trying to interact with this interactable
+                object and even more specific details like what kind of interactor it is. Since we only want our ‘XROffsetGrabInteractable’ to
+                work with ‘XRDirectInteractor’ we’ll use an if-else statement to see if ‘args.interactorObject is XRDirectInteractor’ (<b
+                    >line 27</b
+                >). If it is then we can do our magic and quickly change the attachTransform’s position and rotation to the interactorObject’s
+                transform’s position and rotation, thus achieving an offset grab (<b>line 29</b> and <b>line 30</b>). If it's not an
+                ‘XRDirectInteractor’ then it could be something else like an ‘XRRayInteractor’ or an ‘XRSocketInteractor’ where we don’t want the
+                attachTransform to move. In those cases we can go ahead and reset the attachTransform’s position and rotation to the
+                initialAttachLocalPosition and initialAttachLocalRotation (<b>line 34</b> and <b>line 35</b>) we figured out back in the Start()
+                function.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-offset-grab-in-vr/a-ogivr-img5.4.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                That’s it! An XR Offset Grab Interactable is all done. Attach this script to any object you want to offset grab with a direct
+                interactor hand controller. Here’s the full script:
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-offset-grab-in-vr/a-ogivr-img5.5.png" alt="" class="article-image-center" />
+            </div>
+
+            <!--Article Section 6-->
+            <h3 id="section6">Set Up Offset Grab Cube</h3>
+            <p>
+                Create a new primitive 3D Cube Object game and name it ‘Offset Grabbable Cube’. Rescale and reposition the cube beside the
+                previous red ball and add a new blue ‘Cube’ material.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-offset-grab-in-vr/a-ogivr-img6.1.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                Press Add Component and search for ‘XROffsetGrabInteractable’ the script we just finished writing and add it to the ‘Offset
+                Grabbable Cube’ game object. Notice that when we add the script it also automatically adds a Rigidbody. That is because we
+                inherited from ‘XRGrabInteractable’ and that script requires the game object to have a Rigidbody so we inherit that requirement
+                in our script.
+            </p>
+            <div class="article-image-block">
+                <img src="img/article-offset-grab-in-vr/a-ogivr-img6.2.png" alt="" class="article-image-center" />
+            </div>
+            <p>
+                At this point everything is all set. Hit the play button to check out offset grabbing the blue cube with your Direct Interactor
+                hand controller (make sure the cube’s collider and your hand’s controller collider intersect to be able to grab). You can also
+                still grab this cube with your Ray Interactor hand controller but it won’t be an offset grab, rather it’ll snap to the attach
+                transform (this object doesn’t have an attach transform so it will use the Transform of the game object that the script it is
+                attached to).
+            </p>
+            <p>
+                P.S. I switched off ‘Use Gravity’ for the blue cube and set it to ‘Is Kinematic’ (in the Rigidbody component) so it would float
+                and I didn’t have to keep picking it up when I dropped it.
+            </p>
+            <video controls loop controls autoplay muted="" class="article-video-center">
+                <source src="img/article-offset-grab-in-vr/a-ogivr-vid1-offsetGrabCube.mp4" type="video/mp4" />
+            </video>
+            <!--
+            <p>
+                I went ahead and added a third primitive cylinder object with an attach transform at the base. Download the project if you want
+                to try it out for yourself. There’s a section dedicated to how to use
+                <a href="article-interactions-in-unity-vr.html#section10" target="_blank">Attach Transforms</a> in the previous blog:
+                <a href="article-interactions-in-unity-vr.html">Interactions in Unity VR</a>.
+            </p>
+            <h2><b>GIF 6.4 - GREEN CYLINDER WITH ATTACH TRANSFORM AND OFFSET GRAB WORKING</b></h2>
+            -->
 
             <!--Links-->
             <div class="portfolio-item-links">
                 <div class="tooltip">
-                    <span class="tooltiptext">Teleporting Through a Portal</span>
+                    <span class="tooltiptext">Interactions in Unity VR</span>
                     <div class="play-link">
-                        <a href="article-teleporting-through-a-portal.html" class="btn">Last Blog</a>
+                        <a href="article-interactions-in-unity-vr.html" class="btn">Last Blog</a>
                     </div>
                 </div>
 
                 <div class="tooltip">
-                    <span class="tooltiptext">Image Capture for Polaroid Camera in VR</span>
+                    <span class="tooltiptext">Teleporting Through a Portal</span>
                     <div class="repo-link">
-                        <a href="article-image-capture-for-polaroid-camera-in-vr.html" class="btn">Next Blog</a>
+                        <a href="article-teleporting-through-a-portal.html" class="btn">Next Blog</a>
                     </div>
                 </div>
             </div>

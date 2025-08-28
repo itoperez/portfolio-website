@@ -55,15 +55,15 @@
         <!--<section class="summary">-->
         <div class="portfolio-item-summary">
             <p>
-                Flappy Bird is played the just like it was on mobile in this PC remake. Press spacebar or right click to give the bird an upward
-                boost while avoiding the tube obstacles as well as the ceiling and ground. Jumps are unlimited and the level is infinite.
-                Difficulty increases every 10 tubes (maxed at 40) with smaller gaps and smaller space between tube spawns.
+                Flappy Bird is played just like it was on mobile in this PC remake. Press spacebar or right click to give the bird an upward
+                boost while avoiding the tube obstacles, ceiling, and ground. Jumps are unlimited and the level is infinite. The difficulty
+                increases every 10 tube pairs with smaller gaps and faster tube spawns. A maximum difficulty is reached at tube pair 40.
             </p>
             <p>
-                This project really taught me how to organize things early on for a full game. The game is complete with UI, game over window,
-                main menu screen, and loading screen. I learned about changing prefabs in script and rotating them, UI Canvas, UI text and
-                buttons, animating UI elements, persistent data, scene transitions, enums for game state and difficulty, and euler angles to make
-                bird seem top heavy.
+                This project taught me how to organize things early on for a full game. The game is complete with UI, game over window, main menu
+                screen, and loading screen. I learned how to create several scripts to: rotate prefabs, control a UI Canvas, use UI text and
+                buttons, animate UI elements, create persistent data, add scene transitions, use enums for game state and difficulty, and make
+                use of euler angles to make bird seem top heavy.
             </p>
         </div>
         <!--</section>-->
@@ -160,16 +160,15 @@
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
                 <p>
-                    The game will wait for input before starting to flop to bird 'forward'. The score UI (top center) increases when the bird
-                    passes a pipe pair. Pipe data is stored in a prefab class that includes pipe gap size, speed, and other logic to move and
-                    deactivate pipes. The ground is made of three identical prefabs that cycle in a closed loop offscreen. Clouds work just like
-                    the ground with three cloud variations.
+                    Upon loading, the game will wait for input before starting to flop to bird forward. The score UI (top center) increases when
+                    the bird passes a pipe pair. Pipe data is stored in a prefab class that includes pipe gap size, speed, and other logic to
+                    move and deactivate the pipe pair. The ground is made of three identical prefabs that cycle in a closed loop offscreen.
+                    Clouds work just like the ground with three cloud variations.
                 </p>
                 <p>
                     Dying will trigger an animated pop up Game Over window that has buttons to reload the scene or go to a Main Menu scene. The
-                    High Score is updated at this time and with a new High Score message if it has been beat. A loading scene was added for
-                    switching between scenes which is more useful in bigger games that have more data to load but is still good to have. The Main
-                    Menu scene has buttons with options to play or quit the game.
+                    high score is updated at this time and a new high score message will be shown if the previous high score has been beaten. A
+                    loading scene was added for switching between scenes. The Main Menu scene has two buttons: play and quit.
                 </p>
             </div>
 

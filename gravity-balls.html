@@ -55,15 +55,18 @@
         <!--<section class="summary">-->
         <div class="portfolio-item-summary">
             <p>
-                Gravity Balls is named that because I couldn't think of anything better. In this puzzle platformer the point of the game is to
-                get the correct ball with specific personal gravity (green balls fall toward green edges) into the correct color coded pocket.
-                This game however was not made with that wincase in mind but rather this was more of a project to explore possible mechanics in a
-                gravity themed game. Move around with WASD or arrow keys and jump using spacebar, press again while in the air to do a double
-                jump. Use the tab key to turn personal gravity on or off. You'll know it's on when you're glowing red. When you get close to
-                another wall, left click to switch to that gravity. The gravity you switch to is based on the last up, left, or right collider
-                the character has hit. In the case of multiple concurrent collisions you can decide where to pop to if you are holding that
-                direction down otherwise the default is to gravitate to the last touch collider. Press the R key to switch between the following
-                camera and static camera.
+                Gravity Balls is named that because I couldn't think of anything better. In this puzzle platformer the objective is to get the
+                correct ball into the correct color coded pocket. Each ball has a specific personal gravity where they fall towards their
+                corresponding color’s edges. This isn’t a complete game, I just like gravity mechanics and wanted to see if I could make
+                something work.
+            </p>
+            <p>
+                Move around with WASD or arrow keys and jump using spacebar, press again while in the air to do a double jump. Use the tab key to
+                toggle between personal gravity and world gravity (red by default). You'll know it's on when you're glowing red. When you get
+                close to another wall, left click to switch to that wall’s gravity. The gravity you switch to is based on the last up, left, or
+                right collider the character has hit. In the case of multiple collisions it will stick you to the WASD direction you are holding
+                down. If no direction is being held then the default is to gravitate to the last collider that was activated. Press the R key to
+                switch between a character chase camera and a static camera.
             </p>
         </div>
         <!--</section>-->
@@ -173,18 +176,17 @@
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
                 <p>
-                    In addition to personal gravity the world gravity can be changed currently using 7890 on the keyboard but ideally the level
-                    designer will use this with additional obstacles that will fall accordingly for a balanced level. Personal and world gravity
-                    strength can also be altered. Objects and player will fall faster or slower depending of light, normal, or heavy gravity. The
-                    player also has extra abilities depending on gravity. Light gravity allows it to jump higher but not as far like Luigi and
-                    holding down the spacebar lets you hover. Heavy gravity is for a lower but further jump like Mario and holding down left
-                    shift triggers an accelerated smash. Normal gravity is just regular jump no abilities. Current though, just for you to get a
-                    feel for the game, all abilities are available from the start.
+                    In addition to personal gravity the world’s default red gravity can be changed (currently using 7890 for up, down, left, and
+                    right). Ideally the level designer will use this with additional obstacles. Personal and world gravity strength can also be
+                    altered. The object’s and player’s gravity can also be altered as well: light, normal, or heavy. The player also has extra
+                    abilities depending on the active gravity. Light gravity: jump higher but not as far (like Luigi) and holding down the
+                    spacebar lets you hover. Heavy gravity: a lower but further jump (like Mario) and holding down left shift triggers an
+                    accelerated smash. Normal gravity: a regular jump with no abilities.
                 </p>
                 <p>
-                    A couple additional things learned in this project include binary properties for determining the last touch collider. A
-                    homemade Cinemachine but then when I learned about Cinemachine I used it for a camera that follows the player and stays in
-                    the level bounds. More on Gizmos, forces, scene gravity, physical materials, and Unity's 3% extra collider area that kept
+                    I learned a couple of things in this project including binary properties for determining the last touch collider. I also made
+                    a Cinemachine clone before I found out about Cinemachine. The camera now follows the player and stays in the level bounds.
+                    Expanded my knowledge on Gizmos, forces, scene gravity, physical materials, and Unity's 3% extra collider area that kept
                     getting my character stuck in tight spaces.
                 </p>
             </div>

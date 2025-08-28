@@ -55,12 +55,12 @@
         <!--<section class="summary">-->
         <div class="portfolio-item-summary">
             <p>
-                FPS Survival Game is an open world ('open area' and with no boundaries so don't fall off) game with endless zombies/cannibals and
-                wild boars trying to kill you. Try to survive as long as you can with your six given weapons [axe, revolver, shotgun, assault
-                rifle, spear, and bow]. Switch between weapons using numbers 1-6 on keyboard or with the scroll wheel on your mouse. Enemies will
-                spawn all over the map but will only chase and attack you when you are in their chase and then attack radius. Chase radius is
-                made larger when enemies are hit. All weapons are shot by left clicking and can be aimed (a zoom in) with right click except the
-                axe. The bow and spear require you to aim/draw before shooting.
+                FPS Survival Game is an open world game with endless waves of zombies, cannibals, and wild boars trying to kill you. Try to
+                survive as long as you can with your six given weapons: axe, revolver, shotgun, assault rifle, spear, and bow. Switch between
+                weapons using numbers 1-6 on keyboard or with the scroll wheel on your mouse. Enemies have spawn points throughout the map. They
+                only chase you if you cross into their chase radius and attack once they’ve reached you. The enemy’s chase radius is made larger
+                when they are provoked by being attacked first. All weapons are shot by left clicking and can be aimed (zoom) with right click
+                except the axe. The bow and spear require you to draw before shooting.
             </p>
         </div>
         <!--</section>-->
@@ -157,20 +157,20 @@
                 <a href="https://play.unity.com/mg/other/webgl-builds-124491" target="_blank" class="btnBlock">Play Game</a>
                 -->
                 <p>
-                    This project required animating the player/weapons and enemies with an extra cool two camera trick with different FOVs to see
-                    the weapons and world. To deal damage the axe has an attack point attached to its head to detect collisions just like the
-                    punches and kicks in the Beat Em Up game. Spears and arrows have similar attack points attached on the head of the
-                    projectile. These prefabs that are instantiated when fired and shoot forward using a force. They also rotate to simulate
-                    gravity in a forward arch kind of way. The remaining gun weapons use Ray Tracing to register a hit. The player has a capsule
-                    collider that resizes when crouching and jumps with the player when jumping. Sound FX all around like usual and there is a
-                    scene manager.
+                    In this project I learned how to animate the player, weapons, and enemies. To draw certain weapons I used two cameras with
+                    different FOVs. Dealing damage the axe has an attack point attached to its head to detect collisions just like the punches
+                    and kicks in the <a href="beat-em-up.html">Beat Em Up game</a> . Projectiles, like the spears and arrows, have similar attack
+                    points attached on the head of the projectiles. These prefabs that are instantiated when fired and shoot forward using a
+                    force. They also slightly rotate in a forward arch to imitate gravity. The remaining hitscan gun weapons use Ray Tracing to
+                    register a hit. The player has a capsule collider that resizes when crouching and jumps with the player when jumping. Sound
+                    FX are placed throughout the map, the player, the weapons, and on the NPCs. The game has a scene manager.
                 </p>
                 <p>
-                    Additionally there is a health UI and stamina UI which regenerates over time and is used to allow the player to sprint,
-                    located on the top left of the screen. Two more enemy UIs are on the top right of the screen. The top bar is for
-                    cannibals/zombies and the bottom one is for boars. They appear only if the enemy is actively aware of you. If you have more
-                    than one enemy after you, priority is given to the last one you have attacked. Finally a new enemy will spawn when another of
-                    its kind has been killed and will patrol the map on walkable terrain using Unity's NavMesh Pro.
+                    The UI added includes a health and stamina bar (top left) which both regenerate over time. Stamina is used for the player’s
+                    sprint ability. Two more enemy health bars will appear (top right) only when an enemy is actively aware of you. The top bar
+                    is used for cannibals/zombies and the bottom one is for boars. If you have more than one enemy after you, the enemy health
+                    bar will show the last enemy you attacked. A new enemy will spawn at one of the designated spawn points when another of its
+                    kind has been killed. It will patrol the map on walkable terrain using Unity's NavMesh Pro.
                 </p>
             </div>
 
