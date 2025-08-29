@@ -737,6 +737,7 @@ header {
     .article {
         position: relative;
         min-height: var(--item-min-height-sm);
+        width: 95%;
     }
 }
 
@@ -1168,19 +1169,21 @@ header {
 
 @media (max-width: 1400px) {
     .article-video-center {
-        height: 400px;
+        width: 95%;
         object-fit: contain;
         overflow: hidden;
     }
 }
 
-@media (max-width: 800px) {
+/*
+@media (max-width: 900px) {
     .article-video-center {
-        height: 325px;
+        width: 95%;
         object-fit: contain;
         overflow: hidden;
     }
 }
+
 
 @media (max-width: 650px) {
     .article-video-center {
@@ -1189,6 +1192,7 @@ header {
         overflow: hidden;
     }
 }
+*/
 
 /* Tooltip container */
 .tooltip {
