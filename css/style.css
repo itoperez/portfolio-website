@@ -1159,9 +1159,17 @@ header {
     overflow: hidden;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1400px) {
     .article-video-center {
         height: 400px;
+        object-fit: contain;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 800px) {
+    .article-video-center {
+        height: 230px;
         object-fit: contain;
         overflow: hidden;
     }
