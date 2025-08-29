@@ -736,7 +736,7 @@ header {
 @media (max-width: 800px) {
     .article {
         position: relative;
-        min-height: var(--item-min-height-sm);
+        /*min-height: var(--item-min-height-sm);*/
         width: 95%;
     }
 }
