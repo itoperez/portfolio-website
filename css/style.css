@@ -730,7 +730,7 @@ header {
 
 .article {
     position: relative;
-    min-height: var(--item-min-height-md);
+    min-height: var(--item-min-height-sm);
 }
 
 .article-image {
@@ -1177,7 +1177,7 @@ header {
 
 @media (max-width: 650px) {
     .article-video-center {
-        height: 200px;
+        height: 190px;
         object-fit: contain;
         overflow: hidden;
     }
