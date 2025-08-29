@@ -31,8 +31,8 @@
     --fs-h3: 1.25rem;
     --fs-body: 1rem;
 
-    --item-min-height-sm: 20rem;
-    --item-min-height-md: 30rem;
+    --item-min-height-sm: 15rem;
+    --item-min-height-md: 25rem;
 
     --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25), 0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
 }
@@ -730,7 +730,14 @@ header {
 
 .article {
     position: relative;
-    min-height: var(--item-min-height-sm);
+    min-height: var(--item-min-height-md);
+}
+
+@media (max-width: 800px) {
+    .article {
+        position: relative;
+        min-height: var(--item-min-height-sm);
+    }
 }
 
 .article-image {
